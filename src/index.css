@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+:root { --bg: #fff; --fg: #000; }
+::selection { background: #000; color: #fff; }
+
+/* Keep everything black & white only */
+a { color: inherit; }
+
+/* Headings bolded by design */
+h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+
+/* Thin hairline borders using black at low opacity (still monochrome) */
+.hr-bw { border-color: rgba(0,0,0,0.12); }
