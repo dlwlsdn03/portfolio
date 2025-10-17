@@ -18,12 +18,13 @@ export const work = [
     role: 'Private Equity Intern',
     period: 'Aug 2025 - Oct 2025',
     summary: 'Investment Research and Valuation',
+    logo: 'lvo.png'
   },
   {
     company: 'University of Auckland',
     role: 'Research Intern',
     period: 'Nov 2024 - Feb 2025',
-    summary: 'Research and Development Engineering',
+    summary: 'Research and Development',
     logo: 'uoa.jpg'
   },
 ]
@@ -48,6 +49,12 @@ export const publications = [
   {
     title: 'An Information Crition Approach to Autoregressive Volatility Modelling',
     venue: 'Working Paper',
+    year: '2025',
+    link: '#',
+  },
+  {
+    title: 'OPEC+ Oil Supply Shock on Industry Valuations',
+    venue: '',
     year: '2025',
     link: '#',
   },
