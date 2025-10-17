@@ -1,43 +1,68 @@
+// src/App.jsx
 import React from 'react'
-import Navbar from './components/Navbar.jsx'
 import Section from './components/Section.jsx'
-import { useScrollSpy } from './hooks/useScrollSpy.js'
 import { work, education, publications } from './data/content.js'
+import { LinkedInIcon, GitHubIcon, MailIcon } from './components/Icons.jsx'
 
-const SECTION_IDS = ['home','work','education','research']
+function IconButton({ href, label, children }) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      target={href?.startsWith('http') ? '_blank' : undefined}
+      rel={href?.startsWith('http') ? 'noreferrer' : undefined}
+      className="inline-flex items-center justify-center w-16 h-16 border border-black rounded-full hover:bg-black hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-black"
+    >
+      {children}
+    </a>
+  )
+}
+
+function LogoBox({ src, alt }) {
+  // If a logo source exists, show it
+  if (src) {
+    return (
+      <img
+        src={src}                        // e.g. "/logos/fph.png"
+        alt={alt}                        // e.g. "Company logo"
+        className="w-12 h-12 object-contain border border-black"
+        loading="lazy"
+      />
+    )
+  }
+
+  // Otherwise show a simple placeholder
+  return (
+    <div className="w-12 h-12 border border-black flex items-center justify-center">
+      <div className="w-6 h-6 bg-black opacity-5" />
+      <span className="sr-only">{alt}</span>
+    </div>
+  )
+}
+
 
 export default function App() {
-  const activeId = useScrollSpy(SECTION_IDS, 96)
-
   return (
-    <div className="min-h-screen bg-white text-black">
-      <Navbar activeId={activeId} />
-      {/* Hero */}
-      <Section id="home" className="min-h-[90vh]">
-        <div className="max-w-3xl mx-auto px-6 pt-24 sm:pt-28 pb-16 sm:pb-24">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-            Hi, I&apos;m Rickey
-          </h1>
-          <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-black/80">
-            Minimal, modern portfolio. Scroll to see <span className="font-semibold">Work</span>, <span className="font-semibold">Education</span>, and <span className="font-semibold">Research</span>.
-          </p>
-        </div>
+    // The scroll container: one “screen” tall, vertical scroll, snap to each section
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory bg-white text-black">
+      {/* 1) Landing */}
+      <Section id="home" className="snap-start min-h-screen flex items-center justify-center">
+        <h1 className="text-center font-bold tracking-tight text-5xl sm:text-7xl md:text-8xl">
+          Hi, I&apos;m Rickey
+        </h1>
       </Section>
 
-      {/* Work Experience */}
-      <Section id="work" title="Work Experience">
-        <div className="max-w-3xl mx-auto px-6">
-          <ul className="divide-y" style={{borderColor: 'rgba(0,0,0,0.12)'}}>
+      {/* 2) Experience */}
+      <Section id="experience" className="snap-start min-h-screen flex items-center">
+        <div className="max-w-3xl mx-auto px-6 w-full">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-10">Experience</h2>
+          <ul className="divide-y" style={{ borderColor: 'rgba(0,0,0,0.12)' }}>
             {work.map((item, idx) => (
               <li key={idx} className="py-6 flex gap-4">
-                {/* Logo placeholder */}
-                <div className="flex-shrink-0 w-12 h-12 border flex items-center justify-center" style={{borderColor:'#000'}}>
-                  <span className="sr-only">{item.company} logo</span>
-                  <div className="w-6 h-6 bg-black" style={{opacity: 0.05}}></div>
-                </div>
+                <LogoBox src={`/logos/${item.logo}`} alt={`${item.company} logo`} />
                 <div className="flex-1">
                   <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-lg font-bold">{item.role} · {item.company}</h3>
+                    <h3 className="text-xl font-bold">{item.role} · {item.company}</h3>
                     <span className="text-sm text-black/60">{item.period}</span>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-black/80">{item.summary}</p>
@@ -48,19 +73,17 @@ export default function App() {
         </div>
       </Section>
 
-      {/* Education */}
-      <Section id="education" title="Education">
-        <div className="max-w-3xl mx-auto px-6">
-          <ul className="divide-y" style={{borderColor: 'rgba(0,0,0,0.12)'}}>
+      {/* 3) Education */}
+      <Section id="education" className="snap-start min-h-screen flex items-center">
+        <div className="max-w-3xl mx-auto px-6 w-full">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-10">Education</h2>
+          <ul className="divide-y" style={{ borderColor: 'rgba(0,0,0,0.12)' }}>
             {education.map((e, idx) => (
               <li key={idx} className="py-6 flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 border flex items-center justify-center" style={{borderColor:'#000'}}>
-                  <span className="sr-only">{e.school} logo</span>
-                  <div className="w-6 h-6 bg-black" style={{opacity: 0.05}}></div>
-                </div>
+                <LogoBox sr={`${e.school} logo`} />
                 <div className="flex-1">
                   <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-lg font-bold">{e.degree} · {e.school}</h3>
+                    <h3 className="text-xl font-bold">{e.degree} · {e.school}</h3>
                     <span className="text-sm text-black/60">{e.period}</span>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-black/80">{e.details}</p>
@@ -71,9 +94,10 @@ export default function App() {
         </div>
       </Section>
 
-      {/* Research / Publications */}
-      <Section id="research" title="Research & Publications">
-        <div className="max-w-3xl mx-auto px-6">
+      {/* 4) Research */}
+      <Section id="research" className="snap-start min-h-screen flex items-center">
+        <div className="max-w-3xl mx-auto px-6 w-full">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-10">Research &amp; Publications</h2>
           <ol className="list-decimal ml-6 space-y-4">
             {publications.map((p, idx) => (
               <li key={idx} className="leading-relaxed">
@@ -82,7 +106,7 @@ export default function App() {
                 {p.link && (
                   <>
                     {' · '}
-                    <a className="underline decoration-2 underline-offset-4" href={p.link} target="_blank" rel="noreferrer" aria-label={`Open ${p.title}`}>
+                    <a className="underline decoration-2 underline-offset-4" href={p.link} target="_blank" rel="noreferrer">
                       Link
                     </a>
                   </>
@@ -93,11 +117,24 @@ export default function App() {
         </div>
       </Section>
 
-      <footer className="mt-24 mb-16 px-6">
-        <div className="max-w-3xl mx-auto text-sm text-black/60">
-          © {new Date().getFullYear()} Rickey. All rights reserved.
+      {/* 5) Connect */}
+      <Section id="connect" className="snap-start min-h-screen flex items-center justify-center">
+        <div className="text-center px-6">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-10">Connect</h2>
+          <div className="flex items-center justify-center gap-4">
+            {/* Replace # with your real profile URLs and email */}
+            <IconButton href="#" label="LinkedIn">
+              <LinkedInIcon className="w-7 h-7" />
+            </IconButton>
+            <IconButton href="#" label="GitHub">
+              <GitHubIcon className="w-7 h-7" />
+            </IconButton>
+            <IconButton href="mailto:you@example.com" label="Email">
+              <MailIcon className="w-7 h-7" />
+            </IconButton>
+          </div>
         </div>
-      </footer>
+      </Section>
     </div>
   )
 }

@@ -1,44 +1,54 @@
 export const work = [
   {
-    company: 'Company Name',
-    role: 'Job Title',
-    period: '2023 — Present',
-    summary: 'One sentence about your impact, scope, or focus. Optionally add a key metric.',
+    company: 'Corporate Value Associates',
+    role: 'Strategy Consultant',
+    period: 'Oct 2025 - Present',
+    summary: 'Strategy and Deals Advisory',
+    logo: 'cva.jpg'
   },
   {
-    company: 'Another Company',
-    role: 'Prior Role',
-    period: '2021 — 2023',
-    summary: 'Another sentence with concise, outcome-oriented phrasing.',
+    company: 'University of Auckland',
+    role: 'Research Assistant',
+    period: 'Feb 2024 - Present',
+    summary: 'Computer Systems Engineering',
+    logo: 'uoa.jpg'
+  },
+  {
+    company: 'LongView Owners',
+    role: 'Private Equity Intern',
+    period: 'Aug 2025 - Oct 2025',
+    summary: 'Investment Research and Valuation',
+  },
+  {
+    company: 'University of Auckland',
+    role: 'Research Intern',
+    period: 'Nov 2024 - Feb 2025',
+    summary: 'Research and Development Engineering',
+    logo: 'uoa.jpg'
   },
 ]
 
 export const education = [
   {
-    school: 'University Name',
-    degree: 'Degree / Program',
-    period: '2019 — 2021',
-    details: 'Thesis, honors, relevant coursework — keep it brief.',
-  },
-  {
-    school: 'Earlier Institution',
-    degree: 'B.S. / B.A.',
-    period: '2015 — 2019',
-    details: 'Optional line about activities or distinctions.',
+    school: 'University of Auckland',
+    degree: 'BCom(Hons), Finance',
+    period: 'Feb 2022 - Nov 2025',
+    details: 'First Class Honours',
+    logo: 'uoa.jpg'
   },
 ]
 
 export const publications = [
   {
-    title: 'Title of Your Paper',
-    venue: 'Journal / Conference',
-    year: '2024',
+    title: 'Realised Volatility Forecasting using Neural Networks and Statistical Feature Selection',
+    venue: 'Working Paper',
+    year: '2025',
     link: '#',
   },
   {
-    title: 'Another Publication',
+    title: 'An Information Crition Approach to Autoregressive Volatility Modelling',
     venue: 'Working Paper',
-    year: '2023',
+    year: '2025',
     link: '#',
   },
 ]
