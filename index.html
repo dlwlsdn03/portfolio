@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- allow content to extend into iOS safe areas (notch/home area) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <!-- tint the iOS URL bar to match your theme (light & dark) -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
     <title>Rickey</title>
     <!-- Inter (bold for headings, regular for body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

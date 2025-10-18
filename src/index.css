@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scrolling */
 html { scroll-behavior: smooth; }
-:root { --bg: #fff; --fg: #000; }
-::selection { background: #000; color: #fff; }
 
 /* --- Theme variables --- */
 :root {
@@ -17,7 +16,7 @@ html { scroll-behavior: smooth; }
 }
 
 .dark {
-  /* Blue‑tinted grey; change this easily to taste */
+  /* Blue-tinted grey; change this easily to taste */
   --bg: #0f172a;               /* slate-900 vibe, grey with blue hint */
   --fg: #ffffff;
   --muted: rgba(255,255,255,0.85);
@@ -26,18 +25,34 @@ html { scroll-behavior: smooth; }
   --accent: #ffffff;           /* selection highlight switches to white */
 }
 
-/* Make the page use the variables automatically */
+/* Apply theme variables globally */
 html, body { background: var(--bg); color: var(--fg); }
 
 /* Selection highlight follows the theme */
 ::selection { background: var(--accent); color: var(--bg); }
 
-
-/* Keep everything black & white only */
+/* Keep links monochrome by default */
 a { color: inherit; }
 
-/* Headings bolded by design */
+/* Headings bold by design */
 h1, h2, h3, h4, h5, h6 { font-weight: 700; }
 
-/* Thin hairline borders using black at low opacity (still monochrome) */
+/* Old helper (kept for compatibility) */
 .hr-bw { border-color: rgba(0,0,0,0.12); }
+
+/* ---------------- iOS safe-area + dynamic viewport height ---------------- */
+.safe-top    { padding-top:    env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-right  { padding-right:  env(safe-area-inset-right); }
+.safe-left   { padding-left:   env(safe-area-inset-left); }
+
+/* dvh polyfill: use 100vh, upgrade to 100dvh when supported */
+.h-dvh     { height: 100vh; }
+.min-h-dvh { min-height: 100vh; }
+@supports (height: 100dvh) {
+  .h-dvh     { height: 100dvh; }
+  .min-h-dvh { min-height: 100dvh; }
+}
+
+/* Optional: make theme switch feel smoother */
+/* { transition: background-color .25s, color .25s, border-color .25s, filter .25s; } */
