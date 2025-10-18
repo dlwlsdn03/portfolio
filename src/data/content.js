@@ -35,7 +35,7 @@ export const education = [
     degree: 'BCom(Hons), Finance',
     period: 'Feb 2022 - Nov 2025',
     details: 'First Class Honours',
-    logo: 'uoatext.jpg'
+    logo: 'uoatext.png'
   },
 ]
 
