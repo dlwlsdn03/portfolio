@@ -11,7 +11,7 @@ function IconButton({ href, label, children }) {
       aria-label={label}
       target={href?.startsWith('http') ? '_blank' : undefined}
       rel={href?.startsWith('http') ? 'noreferrer' : undefined}
-      className="inline-flex items-center justify-center w-16 h-16 border border-black rounded-full hover:bg-black hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-black"
+      className="inline-flex items-center justify-center w-16 h-16 border border-black rounded-full  transition-colors focus:outline-none focus:ring-1 focus:ring-black"
     >
       {children}
     </a>

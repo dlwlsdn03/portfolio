@@ -54,7 +54,6 @@ export const publications = [
   },
   {
     title: 'OPEC+ Oil Supply Shock on Industry Valuations',
-    venue: '',
     year: '2025',
     link: '#',
   },
