@@ -39,8 +39,8 @@ export const education = [
   },
   {
     school: 'Rangitoto College',
-    degree: 'IB',
-    period: 'Feb 2022 - Nov 2025',
+    degree: 'IBDP',
+    period: 'Feb 2020 - Nov 2021',
     details: 'HL, Mathematics AA, Economics, English',
     logo: 'rc.png'
   },
@@ -48,7 +48,7 @@ export const education = [
 
 export const publications = [
   {
-    title: 'Realised Volatility Forecasting using Neural Networks and Statistical Feature Selection',
+    title: 'Realised Volatility Forecasting using Neural Networks and Statistical Model Selection',
     venue: 'Working Paper',
     year: '2025',
     link: '#',
