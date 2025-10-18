@@ -11,7 +11,7 @@ export const work = [
     role: 'Research Assistant',
     period: 'Feb 2024 - Present',
     summary: 'Computer Systems Engineering',
-    logo: 'uoatext.png'
+    logo: 'uoa.jpg'
   },
   {
     company: 'LongView Owners',
@@ -25,7 +25,7 @@ export const work = [
     role: 'Research Intern',
     period: 'Nov 2024 - Feb 2025',
     summary: 'Research and Development',
-    logo: 'uoatext.png'
+    logo: 'uoa.jpg'
   },
 ]
 
@@ -35,7 +35,7 @@ export const education = [
     degree: 'BCom(Hons), Finance',
     period: 'Feb 2022 - Nov 2025',
     details: 'First Class Honours',
-    logo: 'uoatext.png'
+    logo: 'uoa.jpg'
   },
 ]
 
