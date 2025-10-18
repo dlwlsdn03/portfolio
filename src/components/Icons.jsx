@@ -1,28 +1,61 @@
 // src/components/Icons.jsx
 import React from 'react'
 
-function ImgIcon({ src, alt = '', className = '' }) {
+function ThemedImg({ light, dark, alt = '', className = '' }) {
   return (
-    <img
-      src={src}                 // e.g. "/icons/linkedin.svg"
-      alt={alt}
+    <>
+      {/* Light mode icon */}
+      <img
+        src={light}
+        alt={alt}
+        className={`${className} dark:hidden`}
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      />
+      {/* Dark mode icon (falls back to light if dark not provided) */}
+      <img
+        src={dark || light}
+        alt=""
+        aria-hidden="true"
+        className={`${className} hidden dark:inline`}
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      />
+    </>
+  )
+}
+
+export function LinkedInIcon({ className = '' }) {
+  return (
+    <ThemedImg
+      light="/icons/linkedin.png"
+      dark="/icons/linkedin-dark.png"
+      alt="LinkedIn"
       className={className}
-      loading="lazy"
-      decoding="async"
-      draggable="false"
     />
   )
 }
 
-// Default to your uploaded icons in /public/icons
-export function LinkedInIcon({ className = '' }) {
-  return <ImgIcon src="/icons/linkedin.png" alt="LinkedIn" className={className} />
-}
-
 export function GitHubIcon({ className = '' }) {
-  return <ImgIcon src="/icons/github.png" alt="GitHub" className={className} />
+  return (
+    <ThemedImg
+      light="/icons/github.png"
+      dark="/icons/github-dark.png"
+      alt="GitHub"
+      className={className}
+    />
+  )
 }
 
 export function MailIcon({ className = '' }) {
-  return <ImgIcon src="/icons/mail.png" alt="Email" className={className} />
+  return (
+    <ThemedImg
+      light="/icons/mail.png"
+      dark="/icons/mail-dark.png"
+      alt="Email"
+      className={className}
+    />
+  )
 }

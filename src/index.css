@@ -6,6 +6,33 @@ html { scroll-behavior: smooth; }
 :root { --bg: #fff; --fg: #000; }
 ::selection { background: #000; color: #fff; }
 
+/* --- Theme variables --- */
+:root {
+  --bg: #ffffff;               /* light background */
+  --fg: #000000;               /* light text */
+  --muted: rgba(0,0,0,0.80);   /* secondary text */
+  --muted-60: rgba(0,0,0,0.60);
+  --border: rgba(0,0,0,0.12);  /* hairlines/dividers */
+  --accent: #000000;           /* selection/underline accent */
+}
+
+.dark {
+  /* Blue‑tinted grey; change this easily to taste */
+  --bg: #0f172a;               /* slate-900 vibe, grey with blue hint */
+  --fg: #ffffff;
+  --muted: rgba(255,255,255,0.85);
+  --muted-60: rgba(255,255,255,0.65);
+  --border: rgba(255,255,255,0.14);
+  --accent: #ffffff;           /* selection highlight switches to white */
+}
+
+/* Make the page use the variables automatically */
+html, body { background: var(--bg); color: var(--fg); }
+
+/* Selection highlight follows the theme */
+::selection { background: var(--accent); color: var(--bg); }
+
+
 /* Keep everything black & white only */
 a { color: inherit; }
 

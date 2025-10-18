@@ -35,7 +35,7 @@ function ThemeToggle() {
       onClick={toggle}
       aria-label="Toggle color theme"
       className="fixed top-4 right-4 z-50 inline-flex items-center justify-center
-                 w-10 h-10 transition-[background,color,filter] duration-200
+                 w-10 h-10 rounded-full border transition-[background,color,filter] duration-200
                  focus:outline-none"
       style={{ borderColor: 'var(--fg)' }}
     >
@@ -89,24 +89,14 @@ function WorkItem({ item, idx }) {
       className="py-6 grid gap-4 items-center
                  grid-cols-[48px_1fr] md:grid-cols-[48px_1fr_auto]"
     >
-      {/* 48×48 logo box */}
-    <div className="w-12 h-12 flex items-center justify-center shrink-0">
-      {/* Light mode logo */}
-      <img
-        src={`/logos/${item.logo}`}                // e.g., 'uoa.png'
-        alt={`${item.company} logo`}
-        className="max-w-full max-h-full object-contain dark:hidden"
-        loading="lazy"
-      />
-      {/* Dark mode logo (fallbacks to light if not provided) */}
-      <img
-        src={`/logos/${item.logoDark ?? item.logo}`} // e.g., 'uoa-dark.png'
-        alt="" aria-hidden="true"
-        className="max-w-full max-h-full object-contain hidden dark:block"
-        loading="lazy"
-      />
-    </div>
-
+      <div className="w-12 h-12 flex items-center justify-center shrink-0">
+        <img
+          src={`/logos/${item.logo}`}
+          alt={`${item.company} logo`}
+          className="max-w-full max-h-full object-contain"
+          loading="lazy"
+        />
+      </div>
 
       <div className="min-w-0 leading-tight self-center">
         <button
@@ -116,7 +106,7 @@ function WorkItem({ item, idx }) {
           aria-controls={descId}
           className="text-left p-0 bg-transparent text-xl md:text-2xl font-bold
                      focus:outline-none focus:ring-1 focus:ring-transparent
-                     hover:"
+                     hover:underline underline-offset-4"
         >
           {item.role}
         </button>
@@ -153,17 +143,10 @@ function EduItem({ e, idx }) {
         <img
           src={`/logos/${e.logo}`}
           alt={`${e.school} logo`}
-          className="max-w-full max-h-full object-contain dark:hidden"
-          loading="lazy"
-        />
-        <img
-          src={`/logos/${e.logoDark ?? e.logo}`}
-          alt="" aria-hidden="true"
-          className="max-w-full max-h-full object-contain hidden dark:block"
+          className="max-w-full max-h-full object-contain"
           loading="lazy"
         />
       </div>
-
 
       <div className="min-w-0 leading-tight self-center">
         <button
@@ -173,7 +156,7 @@ function EduItem({ e, idx }) {
           aria-controls={descId}
           className="text-left p-0 bg-transparent text-xl md:text-2xl font-bold
                      focus:outline-none focus:ring-1 focus:ring-transparent
-                     hover:"
+                     hover:underline underline-offset-4"
         >
           {e.school}
         </button>
@@ -239,7 +222,7 @@ export default function App() {
         {/* 4) Research / Publications */}
         <Section id="research" className="snap-start min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-10">Research</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-10">Research &amp; Publications</h2>
 
             <ol className="list-decimal ml-6 space-y-6">
               {publications.map((p, idx) => {
