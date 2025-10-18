@@ -37,6 +37,13 @@ export const education = [
     details: 'First Class Honours',
     logo: 'uoa.jpg'
   },
+  {
+    school: 'Rangitoto College',
+    degree: 'IB',
+    period: 'Feb 2022 - Nov 2025',
+    details: 'HL, Mathematics AA, Economics, English',
+    logo: 'rc.png'
+  },
 ]
 
 export const publications = [
@@ -47,7 +54,7 @@ export const publications = [
     link: '#',
   },
   {
-    title: 'An Information Crition Approach to Autoregressive Volatility Modelling',
+    title: 'An Information Criterion Approach to Autoregressive Volatility Modelling',
     venue: 'Working Paper',
     year: '2025',
     link: '#',
