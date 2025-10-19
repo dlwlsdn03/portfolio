@@ -203,7 +203,7 @@ export default function App() {
       <ThemeToggle />
 
       {/* Snap container uses theme variables instead of fixed black/white */}
-      <div className="h-screen overflow-y-scroll snap-y snap-mandatory
+      <div className="h-dvh overflow-y-scroll snap-y snap-mandatory
                       bg-[var(--bg)] text-[color:var(--fg)]">
         {/* 1) Landing */}
         <Section id="home" className="snap-start min-h-screen flex items-center justify-center">
