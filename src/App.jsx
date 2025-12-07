@@ -251,8 +251,7 @@ function EduItem({ e, idx }) {
           aria-expanded={open}
           aria-controls={descId}
           className="text-left p-0 bg-transparent text-2xl md:text-2xl font-bold
-                     focus:outline-none focus:ring-1 focus:ring-transparent
-                     hover:"
+                     focus:outline-none focus:ring-1 focus:ring-transparent"
         >
           {e.school}
         </button>
@@ -282,19 +281,20 @@ export default function App() {
     <>
       <ThemeToggle />
 
-      {/* Snap container uses theme variables instead of fixed black/white */}
-      <div className="h-dvh overflow-y-scroll snap-y snap-mandatory
+      {/* Snap container uses theme variables instead of fixed black/white
+          NOTE: snap is enabled only at md+ (disabled on mobile) */}
+      <div className="h-dvh overflow-y-auto md:overflow-y-scroll md:snap-y md:snap-mandatory
                       bg-[var(--bg)] text-[color:var(--fg)]">
       
         {/* 1) Landing */}
-        <Section id="home" className="snap-start min-h-screen flex items-center justify-center">
+        <Section id="home" className="snap-none md:snap-start min-h-screen flex items-center justify-center">
           <h1 className="text-center font-bold tracking-tight text-5xl sm:text-7xl md:text-8xl">
             Hi, I&apos;m Rickey
           </h1>
         </Section>
 
         {/* 2) Experience */}
-        <Section id="experience" className="snap-start min-h-screen flex items-center">
+        <Section id="experience" className="snap-none md:snap-start min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Experience</h2>
             <ul className="divide-y divide-[var(--border)]">
@@ -307,7 +307,7 @@ export default function App() {
         </Section>
 
         {/* 3) Education */}
-        <Section id="education" className="snap-start min-h-screen flex items-center">
+        <Section id="education" className="snap-none md:snap-start min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Education</h2>
             <ul className="divide-y divide-[var(--border)]">
@@ -319,7 +319,7 @@ export default function App() {
         </Section>
 
         {/* 4) Research / Publications */}
-        <Section id="research" className="snap-start min-h-screen flex items-center">
+        <Section id="research" className="snap-none md:snap-start min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Research</h2>
 
@@ -357,7 +357,7 @@ export default function App() {
         </Section>
 
         {/* 5) Connect */}
-        <Section id="connect" className="snap-start min-h-screen flex items-center justify-center">
+        <Section id="connect" className="snap-none md:snap-start min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Connect With Me</h2>
             <div className="flex items-center justify-center gap-4">
