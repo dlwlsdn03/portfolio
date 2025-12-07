@@ -250,7 +250,7 @@ function EduItem({ e, idx }) {
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          className="text-left p-0 bg-transparent text-xl md:text-2xl font-bold
+          className="text-left p-0 bg-transparent text-2xl md:text-2xl font-bold
                      focus:outline-none focus:ring-1 focus:ring-transparent
                      hover:"
         >
@@ -285,6 +285,7 @@ export default function App() {
       {/* Snap container uses theme variables instead of fixed black/white */}
       <div className="h-dvh overflow-y-scroll snap-y snap-mandatory
                       bg-[var(--bg)] text-[color:var(--fg)]">
+      
         {/* 1) Landing */}
         <Section id="home" className="snap-start min-h-screen flex items-center justify-center">
           <h1 className="text-center font-bold tracking-tight text-5xl sm:text-7xl md:text-8xl">
