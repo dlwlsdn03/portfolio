@@ -2,32 +2,48 @@ export const work = [
   {
     company: 'Corporate Value Associates',
     role: 'Strategy Consultant',
-    period: 'Oct 2025 - Present',
-    summary: 'Strategy and Deals Advisory',
+    period: 'Jan 2026 - ',
+    summary: 'Strategy Consulting and Deals Advisory',
+    logo: 'cva.jpg',
+    logoDark: 'cva-dark.jpg'
+  },
+  {
+    company: 'Corporate Value Associates',
+    role: 'Summer Strategy Intern',
+    period: 'Oct 2025 - Dec 2025',
+    summary: 'Strategy Consulting and Deals Advisory',
     logo: 'cva.jpg',
     logoDark: 'cva-dark.jpg'
   },
   {
     company: 'University of Auckland',
+    role: 'Graduate Researcher',
+    period: 'Jan 2026 - ',
+    summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance\n Supervised by Prof. Henk Berkman and Dr. Justin Case',
+    logo: 'uoa.jpg',
+    logoDark: 'uoa-dark.jpg'
+  },
+  {
+    company: 'University of Auckland',
     role: 'Research Assistant',
-    period: 'Feb 2024 - Present',
-    summary: 'Computer Systems Engineering',
+    period: 'Feb 2024 - Dec 2025',
+    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
   {
     company: 'LongView Owners',
-    role: 'Private Equity Intern',
+    role: 'Spring Private Equity Intern',
     period: 'Aug 2025 - Oct 2025',
-    summary: 'Investment Research and Valuation',
+    summary: 'Investment Research and Financial Modelling',
     logo: 'lvo.png',
     logoDark: 'lvo-dark.png'
   },
   {
     company: 'University of Auckland',
-    role: 'Research Intern',
+    role: 'Summer Research Intern',
     period: 'Nov 2024 - Feb 2025',
-    summary: 'Research and Development',
+    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervised by Prof. Bruce MacDonald and Dr. Ho Seok Ahn',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -36,9 +52,17 @@ export const work = [
 export const education = [
   {
     school: 'University of Auckland',
+    degree: 'MCom by Research, Finance',
+    period: 'Feb 2026 - Nov 2027',
+    details: 'Thesis: "High Dimensional Volatiltiy Forecasting using Stochastic Effective Degrees of Freedom Computation"\n Supervised by Prof. Henk Berkman and Dr. Justin Case',
+    logo: 'uoa.jpg',
+    logoDark: 'uoa-dark.jpg'
+  },
+  {
+    school: 'University of Auckland',
     degree: 'BCom(Hons), Finance',
     period: 'Feb 2022 - Nov 2025',
-    details: 'First Class Honours',
+    details: 'First Class Honours (GPA 8.0/9/0) \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Supervised by Dr. Justin Case',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -46,28 +70,24 @@ export const education = [
     school: 'Rangitoto College',
     degree: 'IBDP',
     period: 'Feb 2020 - Nov 2021',
-    details: 'HL, Mathematics AA, Economics, English',
+    details: 'HL in Mathematics AA, Economics, English A\n SL in Biology, Korean A, Business Management\n Bilingual Diploma',
     logo: 'rc.png',
     logoDark: 'rc-dark.png'
-  },
+  }
 ]
 
 export const publications = [
   {
-    title: 'Realised Volatility Forecasting using Neural Networks and Statistical Model Selection',
-    venue: 'Working Paper',
-    year: '2025',
-    link: '#',
+    
+    title: 'Lee, R. & Case, J. (Working Paper). Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory',
+    venue: '',
+    year: '',
+    link: '',
   },
   {
-    title: 'An Information Criterion Approach to Autoregressive Volatility Modelling',
-    venue: 'Working Paper',
-    year: '2025',
-    link: '#',
-  },
-  {
-    title: 'OPEC+ Oil Supply Shock on Industry Valuations',
-    year: '2025',
-    link: '#',
+    title: ' Lee. R. (Working Paper). An Information Criterion Approach to Adaptive Model Selection in Volatility Forecasting',
+    venue: '',
+    year: '',
+    link: '',
   },
 ]
