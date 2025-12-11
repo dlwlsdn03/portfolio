@@ -101,7 +101,7 @@ function CompanyGroup({ group }) {
   return (
     <li className="py-8">
       {/* Top row: logo + company name */}
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-4 mb-0">
         <div className="w-12 h-12 flex items-center justify-center shrink-0">
           <img
             src={`/logos/${group.logo}`}
@@ -116,7 +116,7 @@ function CompanyGroup({ group }) {
           />
         </div>
 
-        <h3 className="text-2xl md:text-3xl font-bold">{group.company}</h3>
+        <h3 className="text-2xl md:text-2xl font-bold">{group.company}</h3>
       </div>
 
       {/* Role list */}
@@ -133,7 +133,7 @@ function CompanyGroup({ group }) {
                 onClick={() => setOpen(v => !v)}
                 aria-controls={descId}
                 aria-expanded={open}
-                className="text-left bg-transparent p-0 font-bold text-lg md:text-xl
+                className="text-left bg-transparent p-0 font-bold text-lg md:text-lg
                            focus:outline-none focus:ring-transparent"
               >
                 {role.role}
@@ -168,11 +168,10 @@ function WorkItem({ item, idx }) {
 
   return (
     <li
-      className="py-6 grid gap-4 items-center
-                 grid-cols-[48px_1fr] md:grid-cols-[48px_1fr_auto]"
+      className="py-6 grid gap-4 items-start grid-cols-[48px_1fr] md:grid-cols-[48px_1fr_auto]"
     >
       {/* 48×48 logo box */}
-      <div className="w-12 h-12 flex items-center justify-center shrink-0">
+      <div className="w-12 h-12 flex items-center justify-center shrink-0 mt-1">
         {/* Light mode logo */}
         <img
           src={`/logos/${item.logo}`}
@@ -189,7 +188,7 @@ function WorkItem({ item, idx }) {
         />
       </div>
 
-      <div className="min-w-0 leading-tight self-center">
+      <div className="min-w-0 leading-tight">
         <button
           type="button"
           onClick={() => setOpen(v => !v)}
@@ -202,21 +201,20 @@ function WorkItem({ item, idx }) {
           {item.role}
         </button>
 
-        <p className="text-sm mt-1 text-[var(--muted)]">{item.company}</p>
+        <p className="text-sm mt-0.5 text-[var(--muted)]">{item.company}</p>
 
         <div
           id={descId}
           className={`overflow-hidden transition-[max-height] duration-300 ease-out
                       ${open ? 'max-h-96 mt-3' : 'max-h-0'}`}
         >
-          {/* 🔥 Updated line here */}
           <p className="text-sm leading-relaxed text-[var(--muted)] whitespace-pre-line">
             {item.summary}
           </p>
         </div>
       </div>
 
-      <span className="hidden md:block text-sm whitespace-nowrap self-center text-[var(--muted-60)]">
+      <span className="hidden md:block text-sm whitespace-nowrap self-start mt-1 text-[var(--muted-60)]">
         {item.period}
       </span>
     </li>
@@ -229,76 +227,74 @@ function EduItem({ e, idx }) {
   const descId = `edu-desc-${idx}`
 
   return (
-    <li
-      className="py-6 grid gap-4 items-center
-                 grid-cols-[48px_1fr] md:grid-cols-[48px_1fr_auto]"
-    >
-      <div className="w-12 h-12 flex items-center justify-center shrink-0">
-        <img
-          src={`/logos/${e.logo}`}
-          alt={`${e.school} logo`}
-          className="max-w-full max-h-full object-contain dark:hidden"
-          loading="lazy"
-        />
-        <img
-          src={`/logos/${e.logoDark ?? e.logo}`}
-          alt="" aria-hidden="true"
-          className="max-w-full max-h-full object-contain hidden dark:block"
-          loading="lazy"
-        />
-      </div>
+    <li className="py-6">
+      {/* Top row: logo + school name */}
+      <div className="flex items-center gap-4 mb-0">
+        <div className="w-12 h-12 flex items-center justify-center shrink-0">
+          <img
+            src={`/logos/${e.logo}`}
+            alt={`${e.school} logo`}
+            className="max-w-full max-h-full object-contain dark:hidden"
+            loading="lazy"
+          />
+          <img
+            src={`/logos/${e.logoDark ?? e.logo}`}
+            alt="" aria-hidden="true"
+            className="max-w-full max-h-full object-contain hidden dark:block"
+            loading="lazy"
+          />
+        </div>
 
-      <div className="min-w-0 leading-tight self-center">
         <button
           type="button"
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          className="text-left p-0 bg-transparent text-xl md:text-2xl font-bold
-                     focus:outline-none focus:ring-1 focus:ring-transparent
-                     hover:"
+          className="text-left p-0 bg-transparent text-2xl md:text-2xl font-bold
+                     focus:outline-none focus:ring-1 focus:ring-transparent"
         >
           {e.school}
         </button>
-        <p className="text-sm mt-1 text-[var(--muted)]">{e.degree}</p>
+      </div>
+
+      {/* Details below */}
+      <div className="ml-16">
+        <p className="font-bold text-lg">{e.degree}</p>
+        <p className="text-sm text-[var(--muted-60)] mt-0.5">{e.period}</p>
 
         <div
           id={descId}
           className={`overflow-hidden transition-[max-height] duration-300 ease-out
                       ${open ? 'max-h-96 mt-3' : 'max-h-0'}`}
         >
-          {/* 🔥 Updated line below */}
-          <p className="text-sm leading-relaxed text-[var(--muted)] whitespace-pre-line">
+          <p className="text-sm leading-relaxed whitespace-pre-line">
             {e.details}
           </p>
         </div>
       </div>
-
-      <span className="hidden md:block text-sm whitespace-nowrap self-center text-[var(--muted-60)]">
-        {e.period}
-      </span>
     </li>
   )
 }
-
 
 export default function App() {
   return (
     <>
       <ThemeToggle />
 
-      {/* Snap container uses theme variables instead of fixed black/white */}
-      <div className="h-dvh overflow-y-scroll snap-y snap-mandatory
+      {/* Snap container uses theme variables instead of fixed black/white
+          NOTE: snap is enabled only at md+ (disabled on mobile) */}
+      <div className="h-dvh overflow-y-auto md:overflow-y-scroll md:snap-y md:snap-mandatory
                       bg-[var(--bg)] text-[color:var(--fg)]">
+      
         {/* 1) Landing */}
-        <Section id="home" className="snap-start min-h-screen flex items-center justify-center">
+        <Section id="home" className="snap-none md:snap-start min-h-screen flex items-center justify-center">
           <h1 className="text-center font-bold tracking-tight text-5xl sm:text-7xl md:text-8xl">
             Hi, I&apos;m Rickey
           </h1>
         </Section>
 
         {/* 2) Experience */}
-        <Section id="experience" className="snap-start min-h-screen flex items-center">
+        <Section id="experience" className="snap-none md:snap-start min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Experience</h2>
             <ul className="divide-y divide-[var(--border)]">
@@ -311,7 +307,7 @@ export default function App() {
         </Section>
 
         {/* 3) Education */}
-        <Section id="education" className="snap-start min-h-screen flex items-center">
+        <Section id="education" className="snap-none md:snap-start min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Education</h2>
             <ul className="divide-y divide-[var(--border)]">
@@ -323,7 +319,7 @@ export default function App() {
         </Section>
 
         {/* 4) Research / Publications */}
-        <Section id="research" className="snap-start min-h-screen flex items-center">
+        <Section id="research" className="snap-none md:snap-start min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Research</h2>
 
@@ -361,7 +357,7 @@ export default function App() {
         </Section>
 
         {/* 5) Connect */}
-        <Section id="connect" className="snap-start min-h-screen flex items-center justify-center">
+        <Section id="connect" className="snap-none md:snap-start min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
             <h2 className="text-4xl sm:text-5xl font-bold mb-10">Connect With Me</h2>
             <div className="flex items-center justify-center gap-4">
