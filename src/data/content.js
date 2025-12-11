@@ -54,7 +54,7 @@ export const education = [
     school: 'University of Auckland',
     degree: 'MCom by Research, Finance',
     period: 'Feb 2026 - Nov 2027',
-    details: 'Thesis: "High Dimensional Volatiltiy Forecasting using Stochastic Effective Degrees of Freedom Computation"\n Supervised by Prof. Henk Berkman and Dr. Justin Case',
+    details: 'Thesis: "Stochastic Effective Degrees of Freedom Estimate for Adaptive Model Selection in Neural Networks: High Dimensional Volatility Forecasting"\n Supervised by Prof. Henk Berkman and Dr. Justin Case',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
