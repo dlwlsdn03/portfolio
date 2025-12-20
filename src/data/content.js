@@ -27,7 +27,7 @@ export const work = [
     company: 'University of Auckland',
     role: 'Research Assistant (Faculty of Engineering and Design)',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisor(s): Dr. Ho Seok Ahn',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisor(s): Dr. Ho Seok Ahn and Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -43,7 +43,7 @@ export const work = [
     company: 'University of Auckland',
     role: 'Research Intern (Faculty of Engineering and Design)',
     period: 'Nov 2024 - Feb 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisor(s): Prof. Bruce MacDonald and Dr. Ho Seok Ahn',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisor(s): Dr. Ho Seok Ahn and Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
