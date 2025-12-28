@@ -1,16 +1,16 @@
 export const work = [
   {
     company: 'University of Auckland',
-    role: 'Researcher (Faculty of Business and Economics)',
-    period: 'Feb 2026',
-    summary: 'Department of Accounting and Finance\n Supervior(s): Dr. Justin Case and TBC\n Advisor(s): Prof. Henk Berkman',
+    role: 'Graduate Researcher (Faculty of Business and Economics)',
+    period: 'Jan 2026 - Present',
+    summary: 'Department of Accounting and Finance\n Superviory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
   {
     company: 'Corporate Value Associates',
     role: 'Strategy Consultant',
-    period: 'Jan 2026',
+    period: 'Jan 2026 - Present',
     summary: 'Strategy and Deals Advisory',
     logo: 'cva.jpg',
     logoDark: 'cva-dark.jpg'
@@ -27,7 +27,7 @@ export const work = [
     company: 'University of Auckland',
     role: 'Research Assistant (Faculty of Engineering and Design)',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisor(s): Dr. Ho Seok Ahn and Prof. Bruce MacDonald',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -43,7 +43,7 @@ export const work = [
     company: 'University of Auckland',
     role: 'Research Intern (Faculty of Engineering and Design)',
     period: 'Nov 2024 - Feb 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisor(s): Dr. Ho Seok Ahn and Prof. Bruce MacDonald',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -52,17 +52,17 @@ export const work = [
 export const education = [
   {
     school: 'University of Auckland',
-    degree: 'MCom (Research), Finance',
+    degree: 'Master of Commerce by Research, Finance',
     period: 'Feb 2026 - Feb 2028',
-    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Supervior(s): Dr. Justin Case and TBC\n Advisor(s): Prof. Henk Berkman',
+    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Superviory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
   {
     school: 'University of Auckland',
-    degree: 'BCom(Hons), Finance',
+    degree: 'Bachelor of Commerce (Honours), Finance',
     period: 'Feb 2022 - Nov 2025',
-    details: 'First Class Honours (GPA 8.0/9.0) \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Supervisor(s): Dr. Justin Case',
+    details: 'First Class Honours (86.9%) \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Supervisory Team: Dr. Justin Case',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
