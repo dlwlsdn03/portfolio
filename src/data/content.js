@@ -3,7 +3,7 @@ export const work = [
     company: 'University of Auckland',
     role: 'Graduate Researcher (Faculty of Business and Economics)',
     period: 'Jan 2026 - Present',
-    summary: 'Department of Accounting and Finance\n Superviory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
+    summary: 'Department of Accounting and Finance\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -54,7 +54,7 @@ export const education = [
     school: 'University of Auckland',
     degree: 'Master of Commerce (Research), Finance',
     period: 'Feb 2026 - Feb 2028',
-    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Superviory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
+    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
