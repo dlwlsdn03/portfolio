@@ -1,9 +1,9 @@
 export const work = [
   {
     company: 'University of Auckland',
-    role: 'Graduate Researcher (Faculty of Business and Economics)',
+    role: 'Graduate Researcher',
     period: 'Jan 2026 - Present',
-    summary: 'Department of Accounting and Finance\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
+    summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -19,15 +19,15 @@ export const work = [
     company: 'Corporate Value Associates',
     role: 'Strategy Intern',
     period: 'Oct 2025 - Dec 2025',
-    summary: 'Strategy and Deals Advisory',
+    summary: 'Strategy Consulting',
     logo: 'cva.jpg',
     logoDark: 'cva-dark.jpg'
   },
   {
     company: 'University of Auckland',
-    role: 'Research Assistant (Faculty of Engineering and Design)',
+    role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
+    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -41,9 +41,9 @@ export const work = [
   },
   {
     company: 'University of Auckland',
-    role: 'Research Intern (Faculty of Engineering and Design)',
+    role: 'Research Intern',
     period: 'Nov 2024 - Feb 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
+    summary: 'Faculty of Engineering and Designs\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -79,13 +79,13 @@ export const education = [
 export const publications = [
   {
     
-    title: 'Lee, R. & Case, J. (Working Paper). Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory',
+    title: 'Lee, R. & Case, J. (2026). Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory. Working Paper.',
     venue: '',
     year: '',
     link: '',
   },
   {
-    title: ' Lee, R. (Working Paper). An Information Criterion Approach to Adaptive Model Selection in Volatility Forecasting',
+    title: ' Lee, R. (2026). An Information Criterion Approach to Adaptive Model Selection in Volatility Forecasting. Working Paper.',
     venue: '',
     year: '',
     link: '',
