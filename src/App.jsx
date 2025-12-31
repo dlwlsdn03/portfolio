@@ -57,9 +57,11 @@ function ScrollIndicator({ containerRef }) {
       const p = (scrollTop / (scrollHeight - clientHeight)) * 100
       setProgress(p)
     }
-    el.addEventListener('scroll', handleScroll)
+    
+    // Use passive listener for better mobile performance
+    el.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
-    return () => el.removeEventListener('scroll', handleScroll)
+    return () => el.removeEventListener('scroll', handleScroll, { passive: true })
   }, [containerRef])
 
   return (
@@ -72,7 +74,7 @@ function ScrollIndicator({ containerRef }) {
                       shadow-[inset_0_0.5px_0_rgba(0,0,0,0.2)]"
       >
         <div 
-          className="h-full bg-[var(--fg)] opacity-80 transition-[width] duration-150 ease-out"
+          className="h-full bg-[var(--fg)] opacity-80 transition-[width] duration-100 ease-out will-change-[width]"
           style={{ width: `${progress}%` }}
         />
       </div>
