@@ -42,17 +42,13 @@ function ThemeToggle() {
   )
 }
 
-/* ---------- Liquid Glass Scroll Indicator ---------- */
 function ScrollIndicator({ containerRef }) {
   const [progress, setProgress] = useState(0)
-
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-
     const handleScroll = () => {
       const { scrollTop, scrollHeight, clientHeight } = el
-      // If content fits without scrolling, progress is 0
       if (scrollHeight <= clientHeight) {
         setProgress(0)
         return
@@ -61,27 +57,25 @@ function ScrollIndicator({ containerRef }) {
       const p = (scrollTop / (scrollHeight - clientHeight)) * 100
       setProgress(p)
     }
-
-    // Listen to scroll events on the container
     el.addEventListener('scroll', handleScroll)
-    // Initial calculation
     handleScroll()
-
     return () => el.removeEventListener('scroll', handleScroll)
   }, [containerRef])
 
-  // Only show if there is some content/progress (optional, currently always showing bar)
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40
-                    w-32 h-1.5 rounded-full overflow-hidden
-                    bg-white/30 dark:bg-white/10
-                    backdrop-blur-md border border-white/20 shadow-lg
-                    transition-opacity duration-300"
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 p-[3px] rounded-full
+                    backdrop-blur-xl bg-white/20 dark:bg-white/10
+                    shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),0_8px_16px_rgba(0,0,0,0.1)]
+                    border border-white/30"
     >
-      <div 
-        className="h-full bg-[var(--fg)] opacity-80 transition-[width] duration-150 ease-out"
-        style={{ width: `${progress}%` }}
-      />
+      <div className="w-32 h-1.5 rounded-full overflow-hidden bg-white/30 dark:bg-white/10
+                      shadow-[inset_0_0.5px_0_rgba(0,0,0,0.2)]"
+      >
+        <div 
+          className="h-full bg-[var(--fg)] opacity-80 transition-[width] duration-150 ease-out"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
     </div>
   )
 }
