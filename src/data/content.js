@@ -1,6 +1,7 @@
 export const work = [
   {
     company: 'University of Auckland',
+    link: 'https://www.auckland.ac.nz',
     role: 'Graduate Researcher',
     period: 'Jan 2026 - Present',
     summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
@@ -9,6 +10,7 @@ export const work = [
   },
   {
     company: 'Corporate Value Associates',
+    link: 'https://www.corporate-value.com/',
     role: 'Strategy Consultant',
     period: 'Jan 2026 - Present',
     summary: 'Strategy and Deals Advisory',
@@ -17,6 +19,7 @@ export const work = [
   },
   {
     company: 'Corporate Value Associates',
+    link: 'https://www.corporate-value.com/',
     role: 'Strategy Intern',
     period: 'Oct 2025 - Dec 2025',
     summary: 'Strategy Consulting',
@@ -25,14 +28,17 @@ export const work = [
   },
   {
     company: 'University of Auckland',
+    link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
     summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
+    
   },
   {
     company: 'LongView Owners',
+    link: 'https://www.longviewowners.co.nz/',
     role: 'Private Equity Intern',
     period: 'Aug 2025 - Oct 2025',
     summary: 'Investment Research and Financial Modelling',
@@ -41,6 +47,7 @@ export const work = [
   },
   {
     company: 'University of Auckland',
+    link: 'https://www.auckland.ac.nz',
     role: 'Research Intern',
     period: 'Nov 2024 - Feb 2025',
     summary: 'Faculty of Engineering and Designs\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
@@ -52,6 +59,7 @@ export const work = [
 export const education = [
   {
     school: 'University of Auckland',
+    link: 'https://www.auckland.ac.nz',
     degree: 'Master of Commerce (Research), Finance',
     period: 'Feb 2026 - Feb 2028',
     details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
@@ -60,6 +68,7 @@ export const education = [
   },
   {
     school: 'University of Auckland',
+    link: 'https://www.auckland.ac.nz',
     degree: 'Bachelor of Commerce (Honours), Finance',
     period: 'Feb 2022 - Nov 2025',
     details: 'First Class Honours (86.9%) \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Supervisory Team: Dr. Justin Case',

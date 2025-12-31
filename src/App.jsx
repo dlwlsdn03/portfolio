@@ -43,32 +43,47 @@ function ThemeToggle() {
 }
 
 function ScrollIndicator({ containerRef }) {
-  const [progress, setProgress] = useState(0)
-  
+  // We use a ref for the progress bar element instead of state
+  // This avoids re-rendering the component on every pixel of scroll
+  const progressBarRef = useRef(null)
+
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-    
+
+    // We use requestAnimationFrame to sync with the browser's refresh rate
+    let rafId
+
     const updateProgress = () => {
       const { scrollTop, scrollHeight, clientHeight } = el
-      if (scrollHeight <= clientHeight) {
-        setProgress(0)
-        return
+      
+      // Calculate percentage
+      let p = 0
+      if (scrollHeight > clientHeight) {
+        p = (scrollTop / (scrollHeight - clientHeight)) * 100
       }
-      const p = (scrollTop / (scrollHeight - clientHeight)) * 100
-      setProgress(p)
+
+      // DIRECT DOM UPDATE: No React State involved
+      if (progressBarRef.current) {
+        progressBarRef.current.style.width = `${p}%`
+      }
     }
+
+    const onScroll = () => {
+      // Cancel any pending frame to avoid stacking calculations
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(updateProgress)
+    }
+
+    // 'scroll' covers both desktop wheel and mobile momentum scrolling
+    el.addEventListener('scroll', onScroll, { passive: true })
     
-    // Regular scroll for desktop
-    el.addEventListener('scroll', updateProgress, { passive: true })
-    
-    // Touch events for mobile to update during scroll
-    el.addEventListener('touchmove', updateProgress, { passive: true })
-    
+    // Initial call
     updateProgress()
+
     return () => {
-      el.removeEventListener('scroll', updateProgress)
-      el.removeEventListener('touchmove', updateProgress)
+      el.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(rafId)
     }
   }, [containerRef])
 
@@ -81,9 +96,14 @@ function ScrollIndicator({ containerRef }) {
       <div className="w-32 h-1.5 rounded-full overflow-hidden bg-white/30 dark:bg-white/10
                       shadow-[inset_0_0.5px_0_rgba(0,0,0,0.2)]"
       >
+        {/* 1. Added ref={progressBarRef}
+           2. Set initial width to '0%' in style
+           3. Removed the 'width' prop that relied on state
+        */}
         <div 
-          className="h-full bg-[var(--fg)] opacity-80 transition-[width] duration-100 ease-out will-change-[width]"
-          style={{ width: `${progress}%` }}
+          ref={progressBarRef}
+          className="h-full bg-[var(--fg)] opacity-80 transition-none ease-out will-change-[width]"
+          style={{ width: '0%' }}
         />
       </div>
     </div>
@@ -116,6 +136,7 @@ function groupWorkByCompany(workArray) {
         company: w.company,
         logo: w.logo,
         logoDark: w.logoDark,
+        link: w.link, // <--- Capture the link here
         roles: []
       }
     }
@@ -125,10 +146,21 @@ function groupWorkByCompany(workArray) {
 }
 
 function CompanyGroup({ group }) {
+  // We determine if we have a link to wrap the header with
+  const HeaderWrapper = group.link ? 'a' : 'div'
+  const wrapperProps = group.link ? {
+    href: group.link,
+    target: '_blank',
+    rel: 'noreferrer',
+    className: "flex items-center gap-4 mb-0 hover:opacity-70 transition-opacity cursor-pointer w-fit"
+  } : {
+    className: "flex items-center gap-4 mb-0"
+  }
+
   return (
     <li className="py-6">
-      {/* Top row: logo + company name */}
-      <div className="flex items-center gap-4 mb-0">
+      {/* Top row: logo + company name (now clickable) */}
+      <HeaderWrapper {...wrapperProps}>
         <div className="w-10 h-10 flex items-center justify-center shrink-0">
           <img
             src={`/logos/${group.logo}`}
@@ -142,12 +174,11 @@ function CompanyGroup({ group }) {
             className="max-w-full max-h-full object-contain hidden dark:block"
           />
         </div>
-
         <h3 className="text-xl md:text-xl font-bold">{group.company}</h3>
-      </div>
+      </HeaderWrapper>
 
       {/* Role list */}
-      <ul className="ml-14 space-y-4">
+      <ul className="ml-14 space-y-4 pt-1">
         {group.roles.map((role, idx) => {
           const [open, setOpen] = useState(false)
           const descId = `company-${group.company}-role-${idx}`
@@ -194,10 +225,21 @@ function EduItem({ e, idx }) {
   const [open, setOpen] = useState(false)
   const descId = `edu-desc-${idx}`
 
+  // Determine wrapper for Education Link
+  const HeaderWrapper = e.link ? 'a' : 'div'
+  const wrapperProps = e.link ? {
+    href: e.link,
+    target: '_blank',
+    rel: 'noreferrer',
+    className: "flex items-center gap-4 mb-0 hover:opacity-70 transition-opacity cursor-pointer w-fit"
+  } : {
+    className: "flex items-center gap-4 mb-0"
+  }
+
   return (
     <li className="py-5">
-      {/* Top row: logo + school name (static, bold) */}
-      <div className="flex items-center gap-4 mb-0">
+      {/* Top row: logo + school name (clickable if link exists) */}
+      <HeaderWrapper {...wrapperProps}>
         <div className="w-10 h-10 flex items-center justify-center shrink-0">
           <img
             src={`/logos/${e.logo}`}
@@ -213,20 +255,18 @@ function EduItem({ e, idx }) {
           />
         </div>
 
-        {/* School Name is now just text, BOLD */}
         <h3 className="text-xl md:text-xl font-bold">
           {e.school}
         </h3>
-      </div>
+      </HeaderWrapper>
 
-      {/* Details below: Degree becomes the Button */}
-      <div className="ml-14">
+      {/* Details below */}
+      <div className="ml-14 pt-1">
         <button
           type="button"
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          // Degree title: text-base, not bold, clickable styling
           className="text-left p-0 bg-transparent text-base font-medium
                      focus:outline-none focus:ring-transparent
                      hover:opacity-70 transition-opacity"
@@ -251,7 +291,6 @@ function EduItem({ e, idx }) {
 }
 
 export default function App() {
-  // We need a ref to the container that actually scrolls
   const scrollContainerRef = useRef(null)
 
   return (
@@ -259,22 +298,28 @@ export default function App() {
       <ThemeToggle />
       <ScrollIndicator containerRef={scrollContainerRef} />
 
-      {/* Attach ref here because overflow-y-auto is on this div */}
+      {/* 1. Removed 'snap-*' classes to disable snap scroll.
+         2. Added scrollbar hiding classes:
+            - [&::-webkit-scrollbar]:hidden (Chrome/Safari/Edge)
+            - [-ms-overflow-style:none] (IE/Edge)
+            - [scrollbar-width:none] (Firefox)
+      */}
       <div 
         ref={scrollContainerRef}
-        className="h-dvh overflow-y-auto md:overflow-y-scroll md:snap-y md:snap-mandatory
-                   bg-[var(--bg)] text-[color:var(--fg)] relative"
+        className="h-dvh overflow-y-auto 
+                   bg-[var(--bg)] text-[color:var(--fg)] relative
+                   [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
       
-        {/* 1) Landing */}
-        <Section id="home" className="snap-none md:snap-start min-h-screen flex items-center justify-center">
+        {/* Landing */}
+        <Section id="home" className="min-h-screen flex items-center justify-center">
           <h1 className="text-center font-bold tracking-tight text-4xl sm:text-6xl md:text-7xl">
             Hi, I&apos;m Rickey
           </h1>
         </Section>
 
-        {/* 2) Experience */}
-        <Section id="experience" className="snap-none md:snap-start min-h-screen flex items-center">
+        {/* Experience */}
+        <Section id="experience" className="min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">Experience</h2>
             <ul className="divide-y divide-[var(--border)]">
@@ -285,8 +330,8 @@ export default function App() {
           </div>
         </Section>
 
-        {/* 3) Education */}
-        <Section id="education" className="snap-none md:snap-start min-h-screen flex items-center">
+        {/* Education */}
+        <Section id="education" className="min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">Education</h2>
             <ul className="divide-y divide-[var(--border)]">
@@ -297,8 +342,8 @@ export default function App() {
           </div>
         </Section>
 
-        {/* 4) Research / Publications */}
-        <Section id="research" className="snap-none md:snap-start min-h-screen flex items-center">
+        {/* Research / Publications */}
+        <Section id="research" className="min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">Research</h2>
 
@@ -335,8 +380,8 @@ export default function App() {
           </div>
         </Section>
 
-        {/* 5) Connect */}
-        <Section id="connect" className="snap-none md:snap-start min-h-screen flex items-center justify-center">
+        {/* Connect */}
+        <Section id="connect" className="min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">Connect With Me</h2>
             <div className="flex items-center justify-center gap-4">
