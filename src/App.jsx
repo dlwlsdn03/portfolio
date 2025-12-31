@@ -44,24 +44,32 @@ function ThemeToggle() {
 
 function ScrollIndicator({ containerRef }) {
   const [progress, setProgress] = useState(0)
+  
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-    const handleScroll = () => {
+    
+    const updateProgress = () => {
       const { scrollTop, scrollHeight, clientHeight } = el
       if (scrollHeight <= clientHeight) {
         setProgress(0)
         return
       }
-      
       const p = (scrollTop / (scrollHeight - clientHeight)) * 100
       setProgress(p)
     }
     
-    // Use passive listener for better mobile performance
-    el.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
-    return () => el.removeEventListener('scroll', handleScroll, { passive: true })
+    // Regular scroll for desktop
+    el.addEventListener('scroll', updateProgress, { passive: true })
+    
+    // Touch events for mobile to update during scroll
+    el.addEventListener('touchmove', updateProgress, { passive: true })
+    
+    updateProgress()
+    return () => {
+      el.removeEventListener('scroll', updateProgress)
+      el.removeEventListener('touchmove', updateProgress)
+    }
   }, [containerRef])
 
   return (
