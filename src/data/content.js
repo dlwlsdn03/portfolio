@@ -50,7 +50,7 @@ export const work = [
     link: 'https://www.auckland.ac.nz',
     role: 'Research Intern',
     period: 'Nov 2024 - Feb 2025',
-    summary: 'Faculty of Engineering and Designs\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
+    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
