@@ -12,17 +12,8 @@ export const work = [
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
     role: 'Strategy Consultant',
-    period: 'Jan 2026 - Present',
+    period: 'Oct 2025 - Present',
     summary: 'Strategy and Deals Advisory',
-    logo: 'cva.jpg',
-    logoDark: 'cva-dark.jpg'
-  },
-  {
-    company: 'Corporate Value Associates',
-    link: 'https://www.corporate-value.com/',
-    role: 'Strategy Intern',
-    period: 'Oct 2025 - Dec 2025',
-    summary: 'Strategy Consulting',
     logo: 'cva.jpg',
     logoDark: 'cva-dark.jpg'
   },
@@ -39,20 +30,11 @@ export const work = [
   {
     company: 'LongView Owners',
     link: 'https://www.longviewowners.co.nz/',
-    role: 'Private Equity Intern',
+    role: 'Investment Analyst',
     period: 'Aug 2025 - Oct 2025',
-    summary: 'Investment Research and Financial Modelling',
+    summary: 'Private Equity and Search Fund Analyst',
     logo: 'lvo.png',
     logoDark: 'lvo-dark.png'
-  },
-  {
-    company: 'University of Auckland',
-    link: 'https://www.auckland.ac.nz',
-    role: 'Research Intern',
-    period: 'Nov 2024 - Feb 2025',
-    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
-    logo: 'uoa.jpg',
-    logoDark: 'uoa-dark.jpg'
   },
 ]
 
