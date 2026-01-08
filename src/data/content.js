@@ -32,7 +32,7 @@ export const work = [
     link: 'https://www.longviewowners.co.nz/',
     role: 'Investment Analyst',
     period: 'Aug 2025 - Oct 2025',
-    summary: 'Private Equity and Search Fund Analyst',
+    summary: 'Private Equity and Search Fund',
     logo: 'lvo.png',
     logoDark: 'lvo-dark.png'
   },
