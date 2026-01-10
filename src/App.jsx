@@ -267,6 +267,14 @@ function EduItem({ e, idx }) {
 export default function App() {
   const scrollContainerRef = useRef(null)
 
+  // Research areas data
+  const researchAreas = [
+    "Financial Economics",
+    "Time Series Econometrics",
+    "Statistical Learning Theory", 
+    "Quantitative Finance"
+  ]
+
   return (
     <>
       <ThemeToggle />
@@ -314,6 +322,27 @@ export default function App() {
         <Section id="research" className="min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8">Research</h2>
+
+            {/* --- NEW: Research Areas Section --- */}
+            <div className="mb-8 md:mb-10">
+              <h3 className="text-sm md:text-base font-medium mb-3 md:mb-4 text-[var(--muted)]">
+                
+              </h3>
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                {researchAreas.map((area, idx) => (
+                  <span 
+                    key={idx} 
+                    className="px-3 py-1.5 md:px-4 md:py-2 
+                               border border-[var(--border)] rounded-full 
+                               text-[11px] md:text-xs font-medium 
+                               hover:bg-[var(--border)] transition-colors cursor-default"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
+            {/* ----------------------------------- */}
 
             <ol className="list-decimal ml-6 space-y-3 md:space-y-4">
               {publications.map((p, idx) => {

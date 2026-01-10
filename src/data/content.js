@@ -4,7 +4,7 @@ export const work = [
     link: 'https://www.auckland.ac.nz',
     role: 'Graduate Researcher',
     period: 'Jan 2026 - Present',
-    summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
+    summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Adviser)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -22,7 +22,7 @@ export const work = [
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn, Prof. Bruce MacDonald',
+    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn (Principal Investigator)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
     
@@ -42,9 +42,9 @@ export const education = [
   {
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
-    degree: 'Master of Commerce (Research), Finance',
+    degree: 'Master of Commerce (Research), Financial',
     period: 'Feb 2026 - Feb 2028',
-    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Supervisory Team: Dr. Justin Case, Prof. Peter Phillips, Prof. Henk Berkman',
+    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Adviser)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -53,7 +53,7 @@ export const education = [
     link: 'https://www.auckland.ac.nz',
     degree: 'Bachelor of Commerce (Honours), Finance',
     period: 'Feb 2022 - Nov 2025',
-    details: 'First Class Honours (86.9%) \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Supervisory Team: Dr. Justin Case',
+    details: 'First Class Honours (86.9%) \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Dr. Justin Case (Main Supervisor)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
