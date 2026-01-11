@@ -4,7 +4,7 @@ export const work = [
     link: 'https://www.auckland.ac.nz',
     role: 'Graduate Researcher',
     period: 'Jan 2026 - Present',
-    summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Adviser)',
+    summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -22,7 +22,7 @@ export const work = [
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\nSupervisory Team: Dr. Ho Seok Ahn (Principal Investigator)',
+    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
     
@@ -42,7 +42,7 @@ export const education = [
   {
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
-    degree: 'Master of Commerce (Research), Financial',
+    degree: 'Master of Commerce (Research), Finance',
     period: 'Feb 2026 - Feb 2028',
     details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Adviser)',
     logo: 'uoa.jpg',
@@ -70,13 +70,13 @@ export const education = [
 export const publications = [
   {
     
-    title: 'Lee, R. & Case, J. (2026). Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory. Working Paper.',
+    title: 'Lee, R. & Case, J. (2026). Volatility Forecasting using Statistically Disciplined Model Memory. Working Paper.',
     venue: '',
     year: '',
     link: '',
   },
   {
-    title: ' Lee, R. (2026). An Information Criterion Approach to Adaptive Model Selection in Volatility Forecasting. Working Paper.',
+    title: ' Lee, R. (2026). Adaptive Autoregressive Model Selection in Financial Time Series. Working Paper.',
     venue: '',
     year: '',
     link: '',
