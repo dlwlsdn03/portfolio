@@ -53,7 +53,7 @@ export const education = [
     link: 'https://www.auckland.ac.nz',
     degree: 'Bachelor of Commerce (Honours), Finance',
     period: 'Feb 2022 - Nov 2025',
-    details: 'First Class Honours (86.9%) \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Dr. Justin Case (Main Supervisor)',
+    details: 'First Class Honours \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Dr. Justin Case (Main Supervisor)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
