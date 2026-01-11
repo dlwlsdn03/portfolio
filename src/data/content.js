@@ -11,9 +11,19 @@ export const work = [
   {
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
-    role: 'Strategy Consultant',
-    period: 'Oct 2025 - Present',
-    summary: 'Strategy and Deals Advisory',
+    role: 'Consultant',
+    period: 'Jan 2026 - Present',
+    summary: 'Strategy Consulting and Deals Advisory',
+    logo: 'cva1.png',
+    logoDark: 'cva1-dark.png'
+    
+  },
+  {
+    company: 'Corporate Value Associates',
+    link: 'https://www.corporate-value.com/',
+    role: 'Consultant Intern',
+    period: 'Oct 2025 - Dec 2025',
+    summary: 'Strategy Consulting',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
@@ -29,7 +39,7 @@ export const work = [
   {
     company: 'LongView Owners',
     link: 'https://www.longviewowners.co.nz/',
-    role: 'Investment Analyst',
+    role: 'Analyst',
     period: 'Aug 2025 - Oct 2025',
     summary: 'Private Equity and Search Fund',
     logo: 'lvo2.png',
