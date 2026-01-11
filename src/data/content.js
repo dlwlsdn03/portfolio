@@ -2,7 +2,7 @@ export const work = [
   {
     company: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
-    role: 'Graduate Researcher',
+    role: 'Researcher',
     period: 'Jan 2026 - Present',
     summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance',
     logo: 'uoa.jpg',
@@ -14,8 +14,8 @@ export const work = [
     role: 'Strategy Consultant',
     period: 'Oct 2025 - Present',
     summary: 'Strategy and Deals Advisory',
-    logo: 'cva.jpg',
-    logoDark: 'cva-dark.jpg'
+    logo: 'cva1.png',
+    logoDark: 'cva1-dark.png'
   },
   {
     company: 'University of Auckland',
@@ -25,7 +25,6 @@ export const work = [
     summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
-    
   },
   {
     company: 'LongView Owners',
@@ -33,8 +32,8 @@ export const work = [
     role: 'Investment Analyst',
     period: 'Aug 2025 - Oct 2025',
     summary: 'Private Equity and Search Fund',
-    logo: 'lvo.png',
-    logoDark: 'lvo-dark.png'
+    logo: 'lvo2.png',
+    logoDark: 'lvo2-dark.png'
   },
 ]
 
