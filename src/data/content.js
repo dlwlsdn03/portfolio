@@ -39,19 +39,28 @@ export const work = [
   {
     company: 'LongView Owners',
     link: 'https://www.longviewowners.co.nz/',
-    role: 'Analyst',
+    role: 'Analyst Intern',
     period: 'Aug 2025 - Oct 2025',
     summary: 'Private Equity and Search Fund',
     logo: 'lvo2.png',
     logoDark: 'lvo2-dark.png'
   },
+  // {
+  //   company: 'Startmate',
+  //   link: 'https://www.startmate.com/',
+  //   role: 'Fellow',
+  //   period: 'Jun 2025 - July 2025',
+  //   summary: 'Startups and Entrepreneurship',
+  //   logo: 'startmate.png',
+  //   logoDark: 'startmate-dark.png'
+  // },
 ]
 
 export const education = [
   {
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
-    degree: 'Master of Commerce (Research), Finance',
+    degree: 'MCom (Research), Finance',
     period: 'Feb 2026 - Feb 2028',
     details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Adviser)',
     logo: 'uoa.jpg',
@@ -60,7 +69,7 @@ export const education = [
   {
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
-    degree: 'Bachelor of Commerce (Honours), Finance',
+    degree: 'BCom(Hons), Finance',
     period: 'Feb 2022 - Nov 2025',
     details: 'First Class Honours \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Dr. Justin Case (Main Supervisor)',
     logo: 'uoa.jpg',
