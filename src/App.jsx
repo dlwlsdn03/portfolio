@@ -155,7 +155,7 @@ function CompanyGroup({ group }) {
             className="max-w-full max-h-full object-contain hidden dark:block"
           />
         </div>
-        <h3 className="text-lg md:text-xl font-bold">{group.company}</h3>
+        <h3 className="text-sm md:text-base font-bold">{group.company}</h3>
       </HeaderWrapper>
 
       <ul className="ml-11 md:ml-14 space-y-3 md:space-y-4 pt-1">
@@ -170,14 +170,16 @@ function CompanyGroup({ group }) {
                 onClick={() => setOpen(v => !v)}
                 aria-controls={descId}
                 aria-expanded={open}
-                className="text-left bg-transparent p-0 text-sm md:text-base
+                className="text-left bg-transparent p-0 text-xs md:text-sm
                            focus:outline-none focus:ring-transparent font-medium
                            hover:opacity-70 transition-opacity"
               >
                 {role.role}
               </button>
 
-              <p className="text-[10px] md:text-xs text-[var(--muted-60)] mt-0.5">{role.period}</p>
+              <p className="text-[9px] md:text-[11px] text-[var(--muted-60)] mt-0.5">
+                {role.period}
+              </p>
 
               <div
                 id={descId}
@@ -230,7 +232,7 @@ function EduItem({ e, idx }) {
           />
         </div>
 
-        <h3 className="text-lg md:text-xl font-bold">
+        <h3 className="text-sm md:text-base font-bold">
           {e.school}
         </h3>
       </HeaderWrapper>
@@ -241,14 +243,16 @@ function EduItem({ e, idx }) {
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          className="text-left p-0 bg-transparent text-sm md:text-base font-medium
+          className="text-left p-0 bg-transparent text-xs md:text-sm font-medium
                      focus:outline-none focus:ring-transparent
                      hover:opacity-70 transition-opacity"
         >
           {e.degree}
         </button>
         
-        <p className="text-[10px] md:text-xs text-[var(--muted-60)] mt-0.5">{e.period}</p>
+        <p className="text-[9px] md:text-[11px] text-[var(--muted-60)] mt-0.5">
+          {e.period}
+        </p>
 
         <div
           id={descId}
@@ -287,7 +291,7 @@ export default function App() {
                    [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
       
-        {/* Landing - FONT SIZE PRESERVED AS REQUESTED */}
+        {/* Landing */}
         <Section id="home" className="min-h-screen flex items-center justify-center">
           <h1 className="text-center font-bold tracking-tight text-4xl sm:text-6xl md:text-7xl">
             Hi, I&apos;m Rickey
@@ -323,7 +327,7 @@ export default function App() {
           <div className="max-w-3xl mx-auto px-6 w-full">
             <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8">Research</h2>
 
-            {/* --- NEW: Research Areas Section --- */}
+            {/* --- Research Areas Section --- */}
             <div className="mb-8 md:mb-10">
               <h3 className="text-sm md:text-base font-medium mb-3 md:mb-4 text-[var(--muted)]">
                 
@@ -342,7 +346,6 @@ export default function App() {
                 ))}
               </div>
             </div>
-            {/* ----------------------------------- */}
 
             <ol className="list-decimal ml-6 space-y-3 md:space-y-4">
               {publications.map((p, idx) => {
@@ -353,8 +356,11 @@ export default function App() {
                 const meta = parts.length ? `(${parts.join(', ')})` : ''
                 return (
                   <li key={idx}>
-                    <div className="font-semibold leading-snug text-[13px] md:text-sm">{p.title}</div>
-                    <div className="mt-1 leading-snug text-[var(--muted-60)] text-[10px] md:text-xs">
+                    {/* CHANGED: Matches Role/Degree Title size (text-xs md:text-sm) */}
+                    <div className="font-semibold leading-snug text-xs md:text-sm">{p.title}</div>
+                    
+                    {/* CHANGED: Matches Date size (text-[9px] md:text-[11px]) */}
+                    <div className="mt-1 leading-snug text-[var(--muted-60)] text-[9px] md:text-[11px]">
                       {meta && <span>{meta}</span>}
                       {p.link && (
                         <>

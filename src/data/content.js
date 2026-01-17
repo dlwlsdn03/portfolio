@@ -61,7 +61,7 @@ export const education = [
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     degree: 'MCom (Research), Finance',
-    period: 'Feb 2026 - Feb 2028',
+    period: 'Feb 2026 - Aug 2027',
     details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Adviser)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
