@@ -158,7 +158,7 @@ function CompanyGroup({ group }) {
         <h3 className="text-sm md:text-base font-bold">{group.company}</h3>
       </HeaderWrapper>
 
-      <ul className="ml-11 md:ml-14 space-y-3 md:space-y-4 pt-1">
+      <ul className="ml-11 md:ml-14 space-y-3 md:space-y-4 mt-0.5">
         {group.roles.map((role, idx) => {
           const [open, setOpen] = useState(false)
           const descId = `company-${group.company}-role-${idx}`
@@ -170,7 +170,8 @@ function CompanyGroup({ group }) {
                 onClick={() => setOpen(v => !v)}
                 aria-controls={descId}
                 aria-expanded={open}
-                className="text-left bg-transparent p-0 text-xs md:text-sm
+                // UPDATED: text-xs md:text-[13px] to be slightly smaller than standard sm
+                className="text-left bg-transparent p-0 text-xs md:text-[13px]
                            focus:outline-none focus:ring-transparent font-medium
                            hover:opacity-70 transition-opacity"
               >
@@ -237,13 +238,14 @@ function EduItem({ e, idx }) {
         </h3>
       </HeaderWrapper>
 
-      <div className="ml-11 md:ml-14 pt-1">
+      <div className="ml-11 md:ml-14 mt-0.5">
         <button
           type="button"
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          className="text-left p-0 bg-transparent text-xs md:text-sm font-medium
+          // UPDATED: text-xs md:text-[13px] to match Role Title size exactly
+          className="text-left p-0 bg-transparent text-xs md:text-[13px] font-medium
                      focus:outline-none focus:ring-transparent
                      hover:opacity-70 transition-opacity"
         >
@@ -356,10 +358,8 @@ export default function App() {
                 const meta = parts.length ? `(${parts.join(', ')})` : ''
                 return (
                   <li key={idx}>
-                    {/* CHANGED: Matches Role/Degree Title size (text-xs md:text-sm) */}
                     <div className="font-semibold leading-snug text-xs md:text-sm">{p.title}</div>
                     
-                    {/* CHANGED: Matches Date size (text-[9px] md:text-[11px]) */}
                     <div className="mt-1 leading-snug text-[var(--muted-60)] text-[9px] md:text-[11px]">
                       {meta && <span>{meta}</span>}
                       {p.link && (
