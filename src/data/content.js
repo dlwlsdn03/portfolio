@@ -35,15 +35,15 @@ export const work = [
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
-  // {
-  // company: 'University of Auckland',
-  //   link: 'https://www.auckland.ac.nz',
-  //   role: 'Research Intern',
-  //   period: 'Nov 2024 - Feb 2025',
-  //   summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering\n Research funding by the Centre for Automation and Robotic Engineering Science',
-  //   logo: 'uoa.jpg',
-  //   logoDark: 'uoa-dark.jpg'
-  // },
+  {
+  company: 'University of Auckland',
+    link: 'https://www.auckland.ac.nz',
+    role: 'Research Intern',
+    period: 'Nov 2024 - Feb 2025',
+    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering',
+    logo: 'uoa.jpg',
+    logoDark: 'uoa-dark.jpg'
+  },
   // {
   //   company: 'LongView Owners',
   //   link: 'https://www.longviewowners.co.nz/',
