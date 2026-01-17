@@ -276,9 +276,9 @@ export default function App() {
   // Research areas data
   const researchAreas = [
     "Financial Economics",
-    "Time Series Econometrics",
+    "Theoretical Econometrics",
     "Statistical Learning Theory", 
-    "Quantitative Finance"
+    "Mathematical Finance"
   ]
 
   return (
@@ -358,7 +358,7 @@ export default function App() {
                 const meta = parts.length ? `(${parts.join(', ')})` : ''
                 return (
                   <li key={idx}>
-                    <div className="font-semibold leading-snug text-xs md:text-sm">{p.title}</div>
+                    <div className="leading-snug text-xs md:text-[13px]">{p.title}</div>
                     
                     <div className="mt-1 leading-snug text-[var(--muted-60)] text-[9px] md:text-[11px]">
                       {meta && <span>{meta}</span>}
