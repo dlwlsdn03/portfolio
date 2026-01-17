@@ -61,8 +61,8 @@ export const education = [
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     degree: 'MCom, Finance',
-    period: 'Feb 2026 - Aug 2027',
-    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
+    period: 'Feb 2026 - Feb 2028',
+    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), TBC (Co-supervisor), TBC (Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
