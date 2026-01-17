@@ -60,9 +60,9 @@ export const education = [
   {
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
-    degree: 'MCom (Research), Finance',
+    degree: 'MCom, Finance',
     period: 'Feb 2026 - Aug 2027',
-    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Adviser)',
+    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor), Prof. Peter Phillips (Co-supervisor), Prof. Henk Berkman (Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -71,7 +71,7 @@ export const education = [
     link: 'https://www.auckland.ac.nz',
     degree: 'BCom(Hons), Finance',
     period: 'Feb 2022 - Nov 2025',
-    details: 'First Class Honours \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Dr. Justin Case (Main Supervisor)',
+    details: 'First Class Honours \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Dr. Justin Case (Main Supervisor)\n\n Awards:\n First in Course Award in FIN701 (Research Methods in Finance)\nFirst in Course Award in FIN710 (Financial Machine Learning)\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Service and Leadership:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in ECON720 (Econometric Methods)\n Class Representative in FIN710 (Financial Machine Learning)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
