@@ -12,20 +12,20 @@ export const work = [
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
     role: 'Consultant',
-    period: 'Jan 2026 - Present',
+    period: 'Oct 2025 - Present',
     summary: 'Strategy Consulting and Deals Advisory',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
-  {
-    company: 'Corporate Value Associates',
-    link: 'https://www.corporate-value.com/',
-    role: 'Consultant Intern',
-    period: 'Oct 2025 - Dec 2025',
-    summary: 'Strategy Consulting',
-    logo: 'cva1.png',
-    logoDark: 'cva1-dark.png'
-  },
+  // {
+  //   company: 'Corporate Value Associates',
+  //   link: 'https://www.corporate-value.com/',
+  //   role: 'Consultant Intern',
+  //   period: 'Oct 2025 - Dec 2025',
+  //   summary: 'Strategy Consulting',
+  //   logo: 'cva1.png',
+  //   logoDark: 'cva1-dark.png'
+  // },
   {
     company: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
@@ -35,15 +35,15 @@ export const work = [
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
-  {
-  company: 'University of Auckland',
-    link: 'https://www.auckland.ac.nz',
-    role: 'Research Intern',
-    period: 'Nov 2024 - Feb 2025',
-    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering',
-    logo: 'uoa.jpg',
-    logoDark: 'uoa-dark.jpg'
-  },
+  // {
+  // company: 'University of Auckland',
+  //   link: 'https://www.auckland.ac.nz',
+  //   role: 'Research Intern',
+  //   period: 'Nov 2024 - Feb 2025',
+  //   summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering',
+  //   logo: 'uoa.jpg',
+  //   logoDark: 'uoa-dark.jpg'
+  // },
   // {
   //   company: 'LongView Owners',
   //   link: 'https://www.longviewowners.co.nz/',
@@ -70,7 +70,7 @@ export const education = [
     link: 'https://www.auckland.ac.nz',
     degree: 'MCom, Finance',
     period: 'Feb 2026 - Feb 2028',
-    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor)\nTBC (Co-supervisor)\nProf. Henk Berkman (Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
+    details: 'Thesis: "Regime Aware Volatility Forecasting using Effective Degrees of Freedom for Time Varying Complexity Control"\n Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\n Prof. Peter Phillips (Informal Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
