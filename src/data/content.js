@@ -96,13 +96,13 @@ export const education = [
 export const publications = [
   {
     
-    title: 'Lee, R. & Case, J. (2026). Statistical model memory selection in volatility forecasting. Working Paper.',
+    title: 'Lee, R. & Case, J. (2026). Statistical model memory selection in volatility forecasting. Working paper.',
     venue: '',
     year: '',
     link: '',
   },
   {
-    title: ' Lee, R. (2026). Time-varying model selection using information criterion. Working Paper.',
+    title: ' Lee, R. (2026). Time-varying model selection using information criterion. Working paper.',
     venue: '',
     year: '',
     link: '',
