@@ -276,9 +276,9 @@ export default function App() {
   // Research areas data
   const researchAreas = [
     "Financial Economics",
-    "Theoretical Econometrics",
-    "Statistical Learning Theory", 
-    "Mathematical Finance"
+    "Financial Econometrics",
+    "Mathematical Finance", 
+    "Statistical Theory"
   ]
 
   return (
