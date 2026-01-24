@@ -44,6 +44,8 @@ function ThemeToggle() {
 
 function ScrollIndicator({ containerRef }) {
   const progressBarRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const timerRef = useRef(null)
 
   useEffect(() => {
     const el = containerRef.current
@@ -63,8 +65,18 @@ function ScrollIndicator({ containerRef }) {
     }
 
     const onScroll = () => {
+      // 1. Show the indicator immediately when scrolling starts
+      setIsVisible(true)
+
+      // 2. Update the progress bar position
       cancelAnimationFrame(rafId)
       rafId = requestAnimationFrame(updateProgress)
+
+      // 3. Clear the existing timer and start a new one to hide it after 2 seconds of idle
+      if (timerRef.current) clearTimeout(timerRef.current)
+      timerRef.current = setTimeout(() => {
+        setIsVisible(false)
+      }, 2000) 
     }
 
     el.addEventListener('scroll', onScroll, { passive: true })
@@ -73,14 +85,17 @@ function ScrollIndicator({ containerRef }) {
     return () => {
       el.removeEventListener('scroll', onScroll)
       cancelAnimationFrame(rafId)
+      if (timerRef.current) clearTimeout(timerRef.current)
     }
   }, [containerRef])
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 p-[3px] rounded-full
-                    backdrop-blur-xl bg-white/20 dark:bg-white/10
-                    shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),0_8px_16px_rgba(0,0,0,0.1)]
-                    border border-white/30"
+    <div 
+      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-40 p-[3px] rounded-full
+                  backdrop-blur-xl bg-white/20 dark:bg-white/10
+                  shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),0_8px_16px_rgba(0,0,0,0.1)]
+                  border border-white/30 transition-opacity duration-500 ease-in-out
+                  ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
     >
       <div className="w-32 h-1.5 rounded-full overflow-hidden bg-white/30 dark:bg-white/10
                       shadow-[inset_0_0.5px_0_rgba(0,0,0,0.2)]"
@@ -244,7 +259,6 @@ function EduItem({ e, idx }) {
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          // UPDATED: text-xs md:text-[13px] to match Role Title size exactly
           className="text-left p-0 bg-transparent text-xs md:text-[13px] font-medium
                      focus:outline-none focus:ring-transparent
                      hover:opacity-70 transition-opacity"
@@ -259,11 +273,32 @@ function EduItem({ e, idx }) {
         <div
           id={descId}
           className={`overflow-hidden transition-[max-height] duration-300 ease-out
-                      ${open ? 'max-h-96 mt-2' : 'max-h-0'}`}
+                      ${open ? 'max-h-[800px] mt-2' : 'max-h-0'}`}
         >
-          <p className="text-[11px] md:text-xs leading-relaxed whitespace-pre-line">
-            {e.details}
-          </p>
+          <div className="text-[11px] md:text-xs leading-relaxed">
+            {/* 1. Honours Grade (if applicable) */}
+            {e.honours && <p className="mb-4 font-medium">{e.honours}</p>}
+
+            {/* 2. Clickable Dissertation/Thesis Title */}
+            {e.thesisTitle && (
+              <p className="">
+                <span className="">{e.thesisLabel}</span>{' '}
+                <a 
+                  href={e.thesisLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="italic hover:opacity-70 transition-opacity font-medium"
+                >
+                  {e.thesisTitle}
+                </a>
+              </p>
+            )}
+
+            {/* 3. The rest of the details (Supervisors, Awards, etc.) */}
+            <p className="whitespace-pre-line">
+              {e.details}
+            </p>
+          </div>
         </div>
       </div>
     </li>
@@ -275,8 +310,8 @@ export default function App() {
 
   // Research areas data
   const researchAreas = [
-    "Financial Economics",
     "Financial Econometrics",
+    "Empirical Asset Pricing",
     "Mathematical Finance", 
     "Statistical Theory"
   ]
@@ -351,31 +386,25 @@ export default function App() {
 
             <ol className="list-decimal ml-6 space-y-3 md:space-y-4">
               {publications.map((p, idx) => {
-                const parts = []
-                const venue = (p.venue ?? '').trim()
-                if (venue) parts.push(venue)
-                if (p.year) parts.push(p.year)
-                const meta = parts.length ? `(${parts.join(', ')})` : ''
                 return (
                   <li key={idx}>
-                    <div className="leading-snug text-xs md:text-[13px]">{p.title}</div>
-                    
-                    <div className="mt-1 leading-snug text-[var(--muted-60)] text-[9px] md:text-[11px]">
-                      {meta && <span>{meta}</span>}
-                      {p.link && (
-                        <>
-                          {meta ? ' · ' : ''}
-                          <a
-                            className="underline decoration-2 underline-offset-4"
-                            href={p.link}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            Link
-                          </a>
-                        </>
-                      )}
+                    <div className="leading-snug text-xs md:text-[13px]">
+                      {p.authors} ({p.year}). <span className="italic">{p.paperTitle}</span>. {p.status}
                     </div>
+                    
+                    {/* The Link to the paper (if it exists) */}
+                    {p.link && (
+                      <div className="mt-1 leading-snug text-[var(--muted-60)] text-[9px] md:text-[11px]">
+                        <a
+                          className="underline decoration-2 underline-offset-4"
+                          href={p.link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View Paper
+                        </a>
+                      </div>
+                    )}
                   </li>
                 )
               })}

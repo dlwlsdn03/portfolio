@@ -70,7 +70,11 @@ export const education = [
     link: 'https://www.auckland.ac.nz',
     degree: 'MCom, Finance',
     period: 'Feb 2026 - Feb 2028',
-    details: 'Thesis: "Regime-Aware Volatility Forecasting using Effective Degrees of Freedom for Adaptive Complexity Control"\n Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\n Prof. Peter Phillips (Informal Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
+    // honours: "First Class Honours",
+    thesisLabel: 'Thesis:',
+    thesisTitle: '"Regime-Aware Volatility Forecasting using Effective Degrees of Freedom for Adaptive Complexity Control"',
+    thesisLink: '/rickey-masters-thesis.pdf',
+    details: 'Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\nProf. Peter Phillips (Informal Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -79,7 +83,11 @@ export const education = [
     link: 'https://www.auckland.ac.nz',
     degree: 'BCom(Hons), Finance',
     period: 'Feb 2022 - Nov 2025',
-    details: 'First Class Honours \n\n Dissertation: "Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"\n Dr. Justin Case (Main Supervisor)\n\n Awards:\n First in Course Award in FIN701 (Research Methods in Finance)\nFirst in Course Award in FIN710 (Financial Machine Learning)\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Service and Leadership:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in ECON720 (Econometric Methods)\n Class Representative in FIN710 (Financial Machine Learning)',
+    honours: 'First Class Honours',
+    thesisLabel: 'Dissertation:',
+    thesisTitle: '"Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"',
+    thesisLink: '/Honours Dissertation.pdf',
+    details: 'Dr. Justin Case (Main Supervisor)\n\n Awards:\n First in Course Award in FIN701 (Research Methods in Finance)\n First in Course Award in FIN710 (Financial Machine Learning)\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Service and Leadership:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in ECON720 (Econometric Methods)\n Class Representative in FIN710 (Financial Machine Learning)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -95,16 +103,17 @@ export const education = [
 
 export const publications = [
   {
-    
-    title: 'Lee, R. & Case, J. (2026). Statistical model memory selection in volatility forecasting. Working paper.',
-    venue: '',
-    year: '',
-    link: '',
+    authors: 'Lee, R., & Case, J.',
+    year: '2026',
+    paperTitle: 'Statistical model memory selection in volatility forecasting',
+    status: 'Working paper.',
+    link: '', 
   },
   {
-    title: ' Lee, R. (2026). Time-varying model selection using information criterion. Working paper.',
-    venue: '',
-    year: '',
+    authors: 'Lee, R.',
+    year: '2026',
+    paperTitle: 'Time-varying model selection using information criterion',
+    status: 'Working paper.',
     link: '',
   },
 ]
