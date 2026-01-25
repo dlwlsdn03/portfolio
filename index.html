@@ -12,11 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;700&family=Schibsted+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;700&family=Schibsted+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
 
     <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet" />
+
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 
     <style>
       @font-face {
@@ -44,20 +46,21 @@
     <script>
       // ==========================================
       // CHOOSE YOUR FONT HERE:
-      // Options: 'inter', 'computer-modern', 'dm-sans', 'jetbrains', 'manrope', 'neue-montreal', 'schibsted', 'google-sans'
+      // Options: 'computer-modern', 'dm-sans', 'inter', 'jetbrains', 'manrope', 'neue-montreal', 'schibsted', 'google-sans', 'satoshi'
       // ==========================================
-      const ACTIVE_FONT = 'google-sans'; 
+      const ACTIVE_FONT = 'schibsted'; 
 
       // Font configurations
       const fontFamilies = {
-        'inter': "'Inter', sans-serif",
         'computer-modern': "'Computer Modern Serif', serif",
         'dm-sans': "'DM Sans', sans-serif",
+        'inter': "'Inter', sans-serif",
         'jetbrains': "'JetBrains Mono', monospace",
         'manrope': "'Manrope', sans-serif",
         'neue-montreal': "'Neue Montreal', sans-serif",
         'schibsted': "'Schibsted Grotesk', sans-serif",
-        'google-sans': "'Google Sans', sans-serif" // Added Google Sans
+        'google-sans': "'Google Sans', sans-serif",
+        'satoshi': "'Satoshi', sans-serif" // Added Satoshi
       };
 
       // Apply the selected font with !important to override Tailwind
