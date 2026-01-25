@@ -3,21 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.svg" />
-    <!-- allow content to extend into iOS safe areas (notch/home area) -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
-    <!-- tint the iOS URL bar to match your theme (light & dark) -->
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 
     <title>Rickey</title>
-    <!-- Inter (bold for headings, regular for body) -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Schibsted+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
+
+    <style>
+      @font-face {
+        font-family: 'Neue Montreal';
+        src: url('/fonts/NeueMontreal-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Neue Montreal';
+        src: url('/fonts/NeueMontreal-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
   </head>
-  <body class="bg-white text-black antialiased font-inter">
+  
+  <body class="bg-white text-black antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      // ==========================================
+      // CHOOSE YOUR FONT HERE:
+      // Options: 'inter', 'computer-modern', 'dm-sans', 'jetbrains', 'neue-montreal', 'schibsted'
+      // ==========================================
+      const ACTIVE_FONT = 'schibsted'; 
+
+      // Font configurations
+      const fontFamilies = {
+        'inter': "'Inter', sans-serif",
+        'computer-modern': "'Computer Modern Serif', serif",
+        'dm-sans': "'DM Sans', sans-serif",
+        'jetbrains': "'JetBrains Mono', monospace",
+        'neue-montreal': "'Neue Montreal', sans-serif",
+        'schibsted': "'Schibsted Grotesk', sans-serif"
+      };
+
+      // Apply the selected font with !important to override Tailwind
+      const selectedFont = fontFamilies[ACTIVE_FONT] || fontFamilies['inter'];
+      document.body.style.setProperty('font-family', selectedFont, "important");
+    </script>
   </body>
 </html>

@@ -1,3 +1,7 @@
+/* 1. Import Inter (Default) and CMU Serif (LaTeX Computer Modern) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/cmu-serif');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,28 +9,42 @@
 /* Smooth scrolling */
 html { scroll-behavior: smooth; }
 
-/* --- Theme variables --- */
+/* --- Theme & Font variables --- */
 :root {
-  --bg: #ffffff;               /* light background */
-  --fg: #000000;               /* light text */
-  --muted: rgba(0,0,0,0.80);   /* secondary text */
+  /* Colors */
+  --bg: #ffffff;               
+  --fg: #000000;               
+  --muted: rgba(0,0,0,0.80);   
   --muted-60: rgba(0,0,0,0.60);
-  --border: rgba(0,0,0,0.12);  /* hairlines/dividers */
-  --accent: #000000;           /* selection/underline accent */
+  --border: rgba(0,0,0,0.12);  
+  --accent: #000000;           
+
+  /* Fonts */
+  --font-default: 'Inter', system-ui, sans-serif;
+  --font-latex: 'CMU Serif', serif;
 }
 
 .dark {
-  /* Blue-tinted grey; change this easily to taste */
-  --bg: #0f172a;               /* slate-900 vibe, grey with blue hint */
+  --bg: #0f172a;               
   --fg: #ffffff;
   --muted: rgba(255,255,255,0.85);
   --muted-60: rgba(255,255,255,0.65);
   --border: rgba(255,255,255,0.14);
-  --accent: #ffffff;           /* selection highlight switches to white */
+  --accent: #ffffff;           
 }
 
-/* Apply theme variables globally */
-html, body { background: var(--bg); color: var(--fg); }
+/* 2. Apply default font globally */
+html, body { 
+  font-family: var(--font-default);
+  background: var(--bg); 
+  color: var(--fg); 
+}
+
+/* 3. The Toggle Class for LaTeX Font */
+/* When this class is added to the <html> tag, it switches the whole site to Computer Modern */
+.latex-mode {
+  font-family: var(--font-latex) !important;
+}
 
 /* Selection highlight follows the theme */
 ::selection { background: var(--accent); color: var(--bg); }
@@ -57,11 +75,7 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
   .min-h-dvh { min-height: 100dvh; }
 }
 
-/* (optional) svh for older iOS to reduce jump when bars collapse/expand */
 @supports (height: 100svh) {
   .h-dvh     { height: 100svh; }
   .min-h-dvh { min-height: 100svh; }
 }
-
-/* Optional: make theme switch feel smoother */
-/* { transition: background-color .25s, color .25s, border-color .25s, filter .25s; } */
