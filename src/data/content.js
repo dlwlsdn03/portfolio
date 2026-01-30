@@ -3,7 +3,7 @@ export const work = [
     company: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Researcher',
-    period: '2026 - Present',
+    period: 'Jan 2026 - Present',
     summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
@@ -12,7 +12,7 @@ export const work = [
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
     role: 'Consultant',
-    period: '2025 - Present',
+    period: 'Oct 2025 - Present',
     summary: 'Strategy Consulting and Deals Advisory',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
@@ -30,7 +30,7 @@ export const work = [
     company: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
-    period: '2024 - 2025',
+    period: 'Feb 2024 - Dec 2025',
     summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
