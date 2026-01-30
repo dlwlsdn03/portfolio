@@ -13,7 +13,7 @@ export const work = [
     link: 'https://www.corporate-value.com/',
     role: 'Consultant',
     period: 'Oct 2025 - Present',
-    summary: 'Strategy Consulting and Deals Advisory',
+    summary: 'Strategy Consulting, Deals Advisory',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
