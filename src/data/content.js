@@ -44,15 +44,15 @@ export const work = [
   //   logo: 'uoa.jpg',
   //   logoDark: 'uoa-dark.jpg'
   // },
-  // {
-  //   company: 'LongView Owners',
-  //   link: 'https://www.longviewowners.co.nz/',
-  //   role: 'Analyst Intern',
-  //   period: 'Aug 2025 - Oct 2025',
-  //   summary: 'Private Equity and Search Fund',
-  //   logo: 'lvo2.png',
-  //   logoDark: 'lvo2-dark.png'
-  // },
+  {
+    company: 'LongView Owners',
+    link: 'https://www.longviewowners.co.nz/',
+    role: 'Analyst Intern',
+    period: 'Aug 2025 - Oct 2025',
+    summary: 'Private Equity Fund',
+    logo: 'lvo2.png',
+    logoDark: 'lvo2-dark.png'
+  },
   // {
   //   company: 'Startmate',
   //   link: 'https://www.startmate.com/',
