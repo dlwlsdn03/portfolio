@@ -12,7 +12,7 @@ export const work = [
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
     role: 'Consultant',
-    period: 'Oct 2025 - Present',
+    period: 'Jan 2026 - Present',
     summary: 'Strategy Consulting, Deals Advisory',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
