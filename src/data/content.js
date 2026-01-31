@@ -74,7 +74,7 @@ export const education = [
     thesisLabel: 'Thesis:',
     thesisTitle: '"Regime-Aware Volatility Forecasting using Effective Degrees of Freedom for Adaptive Complexity Control"',
     thesisLink: '/Masters Thesis.pdf',
-    details: 'Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\nProf. Peter Phillips (Informal Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
+    details: 'Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\nProf. Peter Phillips (Methodological Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
