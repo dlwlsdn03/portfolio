@@ -17,15 +17,15 @@ export const work = [
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
-  // {
-  //   company: 'Corporate Value Associates',
-  //   link: 'https://www.corporate-value.com/',
-  //   role: 'Consultant Intern',
-  //   period: 'Oct 2025 - Dec 2025',
-  //   summary: 'Strategy Consulting',
-  //   logo: 'cva1.png',
-  //   logoDark: 'cva1-dark.png'
-  // },
+  {
+    company: 'Corporate Value Associates',
+    link: 'https://www.corporate-value.com/',
+    role: 'Consultant Intern',
+    period: 'Oct 2025 - Dec 2025',
+    summary: 'Strategy Consulting',
+    logo: 'cva1.png',
+    logoDark: 'cva1-dark.png'
+  },
   {
     company: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
