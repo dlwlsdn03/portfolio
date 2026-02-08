@@ -44,15 +44,15 @@ export const work = [
   //   logo: 'uoa.jpg',
   //   logoDark: 'uoa-dark.jpg'
   // },
-  {
-    company: 'LongView Owners',
-    link: 'https://www.longviewowners.co.nz/',
-    role: 'Analyst Intern',
-    period: 'Aug 2025 - Oct 2025',
-    summary: 'Private Equity Fund',
-    logo: 'lvo2.png',
-    logoDark: 'lvo2-dark.png'
-  },
+  // {
+  //   company: 'LongView Owners',
+  //   link: 'https://www.longviewowners.co.nz/',
+  //   role: 'Analyst Intern',
+  //   period: 'Aug 2025 - Oct 2025',
+  //   summary: 'Private Equity Fund',
+  //   logo: 'lvo2.png',
+  //   logoDark: 'lvo2-dark.png'
+  // },
   // {
   //   company: 'Startmate',
   //   link: 'https://www.startmate.com/',
@@ -72,7 +72,7 @@ export const education = [
     period: '2026 - 2027',
     // honours: "First Class Honours",
     thesisLabel: 'Thesis (40,000 words):',
-    thesisTitle: '"Regime-Aware Volatility Forecasting using Effective Degrees of Freedom for Adaptive Complexity Control"',
+    thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control "',
     thesisLink: '/Masters Thesis.pdf',
     details: 'Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\nProf. Peter Phillips (Methodological Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
     logo: 'uoa.jpg',
@@ -85,7 +85,7 @@ export const education = [
     period: '2022 - 2025',
     honours: 'First Class Honours',
     thesisLabel: 'Dissertation (10,000 words):',
-    thesisTitle: '"Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"',
+    thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control "',
     thesisLink: '/Honours Dissertation.pdf',
     details: 'Dr. Justin Case (Main Supervisor)\n\n Awards:\n First in Course Award in Research Methods in Finance\n First in Course Award in Financial Machine Learning\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Leadership and Service:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in Econometric Methods\n Class Representative in Financial Machine Learning\n\nProfessional Development:\nMcKinsey Forward Program\nStartmate Student Fellowship',
     logo: 'uoa.jpg',
@@ -112,7 +112,7 @@ export const publications = [
   {
     authors: 'Lee, R.',
     year: '2026',
-    paperTitle: 'Time-varying model selection using information criterion',
+    paperTitle: 'Model selection using information criteria in autoregressive volatility forecasting',
     status: 'Working paper.',
     link: '',
   },
