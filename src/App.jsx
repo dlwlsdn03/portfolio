@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { useRef, useState, useEffect } from 'react'
 import Section from './components/Section.jsx'
-import { work, education, publications } from './data/content.js'
+import { professionalWork, researchWork, education, publications } from './data/content.js'
 import { LinkedInIcon, GitHubIcon, MailIcon } from './components/Icons.jsx'
 
 /* ---------- Theme toggle (persists in localStorage) ---------- */
@@ -33,11 +33,11 @@ function ThemeToggle() {
       onClick={toggle}
       aria-label="Toggle color theme"
       className="fixed top-4 right-4 z-50 inline-flex items-center justify-center
-                 w-10 h-10 transition-[background,color,filter] duration-200
+                 w-8 h-8 transition-[background,color,filter] duration-200
                  focus:outline-none"
       style={{ borderColor: 'var(--fg)' }}
     >
-      <img src={icon} alt="" className="w-5 h-5 select-none" />
+      <img src={icon} alt="" className="w-4 h-4 select-none" />
     </button>
   )
 }
@@ -91,13 +91,13 @@ function ScrollIndicator({ containerRef }) {
 
   return (
     <div 
-      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-40 p-[3px] rounded-full
+      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-40 p-[2px] rounded-full
                   backdrop-blur-xl bg-white/20 dark:bg-white/10
                   shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),0_8px_16px_rgba(0,0,0,0.1)]
                   border border-white/30 transition-opacity duration-500 ease-in-out
                   ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
     >
-      <div className="w-32 h-1.5 rounded-full overflow-hidden bg-white/30 dark:bg-white/10
+      <div className="w-24 h-1 rounded-full overflow-hidden bg-white/30 dark:bg-white/10
                       shadow-[inset_0_0.5px_0_rgba(0,0,0,0.2)]"
       >
         <div 
@@ -117,7 +117,7 @@ function IconButton({ href, label, children }) {
       aria-label={label}
       target={href?.startsWith('http') ? '_blank' : undefined}
       rel={href?.startsWith('http') ? 'noreferrer' : undefined}
-      className="group inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 
+      className="group inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 
                  border rounded-full text-[color:var(--fg)] bg-transparent
                  
                  /* 1. The Physics */
@@ -164,15 +164,15 @@ function CompanyGroup({ group }) {
     href: group.link,
     target: '_blank',
     rel: 'noreferrer',
-    className: "flex items-center gap-3 md:gap-4 mb-0 hover:opacity-70 transition-opacity cursor-pointer w-fit"
+    className: "flex items-center gap-1.5 md:gap-2 mb-0 hover:opacity-70 transition-opacity cursor-pointer w-fit"
   } : {
-    className: "flex items-center gap-3 md:gap-4 mb-0"
+    className: "flex items-center gap-1.5 md:gap-2 mb-0"
   }
 
   return (
-    <li className="py-4 md:py-6">
+    <li className="py-3 md:py-4">
       <HeaderWrapper {...wrapperProps}>
-        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shrink-0">
+        <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center shrink-0">
           <img
             src={`/logos/${group.logo}`}
             alt={`${group.company} logo`}
@@ -185,10 +185,10 @@ function CompanyGroup({ group }) {
             className="max-w-full max-h-full object-contain hidden dark:block"
           />
         </div>
-        <h3 className="text-sm md:text-base font-bold">{group.company}</h3>
+        <h3 className="text-xs md:text-sm font-bold">{group.company}</h3>
       </HeaderWrapper>
 
-      <ul className="ml-11 md:ml-14 space-y-3 md:space-y-4 mt-0.5">
+      <ul className="ml-8 md:ml-10 space-y-2 md:space-y-3 mt-0.5">
         {group.roles.map((role, idx) => {
           const [open, setOpen] = useState(false)
           const descId = `company-${group.company}-role-${idx}`
@@ -200,16 +200,14 @@ function CompanyGroup({ group }) {
                 onClick={() => setOpen(v => !v)}
                 aria-controls={descId}
                 aria-expanded={open}
-                // UPDATED: Added flex, items-center, justify-between, and w-full for the chevron alignment
-                className="flex items-center justify-between w-full text-left bg-transparent p-0 text-xs md:text-[13px]
+                className="flex items-center justify-between w-full text-left bg-transparent p-0 text-[10px] md:text-xs
                            focus:outline-none focus:ring-transparent font-medium
                            hover:opacity-70 transition-opacity"
               >
                 <span>{role.role}</span>
                 
-                {/* --- SLEEK ADDITION: Rotating Chevron --- */}
                 <svg 
-                  className={`w-3.5 h-3.5 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                  className={`w-3 h-3 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                              ${open ? 'rotate-180' : 'rotate-0'}`} 
                   fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
                 >
@@ -217,20 +215,18 @@ function CompanyGroup({ group }) {
                 </svg>
               </button>
 
-              <p className="text-[9px] md:text-[11px] text-[var(--muted-60)] mt-0.5">
+              <p className="text-[8px] md:text-[10px] text-[var(--muted-60)] mt-0.5">
                 {role.period}
               </p>
 
               <div
                 id={descId}
                 className={`overflow-hidden transition-[max-height] duration-300 ease-out
-                           ${open ? "max-h-96 mt-2" : "max-h-0"}`}
+                            ${open ? 'max-h-96 mt-2' : 'max-h-0'}`}
               >
-                {role.summary && (
-                  <p className="text-[11px] md:text-xs leading-relaxed whitespace-pre-line text-[var(--muted)]">
-                    {role.summary}
-                  </p>
-                )}
+                <p className="text-[10px] md:text-[11px] leading-relaxed whitespace-pre-line">
+                  {role.summary}
+                </p>
               </div>
             </li>
           )
@@ -249,15 +245,15 @@ function EduItem({ e, idx }) {
     href: e.link,
     target: '_blank',
     rel: 'noreferrer',
-    className: "flex items-center gap-3 md:gap-4 mb-0 hover:opacity-70 transition-opacity cursor-pointer w-fit"
+    className: "flex items-center gap-1.5 md:gap-2 mb-0 hover:opacity-70 transition-opacity cursor-pointer w-fit"
   } : {
-    className: "flex items-center gap-3 md:gap-4 mb-0"
+    className: "flex items-center gap-1.5 md:gap-2 mb-0"
   }
 
   return (
-    <li className="py-4 md:py-5">
+    <li className="py-3 md:py-4">
       <HeaderWrapper {...wrapperProps}>
-        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shrink-0">
+        <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center shrink-0">
           <img
             src={`/logos/${e.logo}`}
             alt={`${e.school} logo`}
@@ -272,27 +268,25 @@ function EduItem({ e, idx }) {
           />
         </div>
 
-        <h3 className="text-sm md:text-base font-bold">
+        <h3 className="text-xs md:text-sm font-bold">
           {e.school}
         </h3>
       </HeaderWrapper>
 
-      <div className="ml-11 md:ml-14 mt-0.5">
+      <div className="ml-8 md:ml-10 mt-0.5">
         <button
           type="button"
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          // UPDATED: Added flex, items-center, justify-between, and w-full for the chevron alignment
-          className="flex items-center justify-between w-full text-left p-0 bg-transparent text-xs md:text-[13px] font-medium
+          className="flex items-center justify-between w-full text-left p-0 bg-transparent text-[10px] md:text-xs font-medium
                      focus:outline-none focus:ring-transparent
                      hover:opacity-70 transition-opacity"
         >
           <span>{e.degree}</span>
 
-          {/* --- SLEEK ADDITION: Rotating Chevron --- */}
           <svg 
-            className={`w-3.5 h-3.5 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+            className={`w-3 h-3 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                        ${open ? 'rotate-180' : 'rotate-0'}`} 
             fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
           >
@@ -300,7 +294,7 @@ function EduItem({ e, idx }) {
           </svg>
         </button>
         
-        <p className="text-[9px] md:text-[11px] text-[var(--muted-60)] mt-0.5">
+        <p className="text-[8px] md:text-[10px] text-[var(--muted-60)] mt-0.5">
           {e.period}
         </p>
 
@@ -309,7 +303,7 @@ function EduItem({ e, idx }) {
           className={`overflow-hidden transition-[max-height] duration-300 ease-out
                       ${open ? 'max-h-[800px] mt-2' : 'max-h-0'}`}
         >
-          <div className="text-[11px] md:text-xs leading-relaxed">
+          <div className="text-[10px] md:text-[11px] leading-relaxed">
             {/* 1. Honours Grade (if applicable) */}
             {e.honours && <p className="mb-4 font-medium">{e.honours}</p>}
 
@@ -336,6 +330,23 @@ function EduItem({ e, idx }) {
         </div>
       </div>
     </li>
+  )
+}
+
+function ExperienceSubsection({ title, workArray }) {
+  if (!workArray || workArray.length === 0) return null
+  
+  return (
+    <div className="mb-7 md:mb-8">
+      <h3 className="text-base md:text-lg font-semibold mb-1.5 md:mb-2 text-[var(--muted)]">
+        {title}
+      </h3>
+      <ul className="divide-y divide-[var(--border)]">
+        {groupWorkByCompany(workArray).map((group, idx) => (
+          <CompanyGroup key={idx} group={group} />
+        ))}
+      </ul>
+    </div>
   )
 }
 
@@ -369,22 +380,20 @@ export default function App() {
           </h1>
         </Section>
 
-        {/* Experience */}
+        {/* Experience - Now Split */}
         <Section id="experience" className="min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
-            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8">Experience</h2>
-            <ul className="divide-y divide-[var(--border)]">
-              {groupWorkByCompany(work).map((group, idx) => (
-                <CompanyGroup key={idx} group={group} />
-              ))}
-            </ul>
+            <h2 className="text-xl md:text-2xl font-bold mb-6 md:mb-7">Experience</h2>
+            
+            <ExperienceSubsection title="Academic" workArray={researchWork} />
+            <ExperienceSubsection title="Professional" workArray={professionalWork} />
           </div>
         </Section>
 
         {/* Education */}
         <Section id="education" className="min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
-            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8">Education</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Education</h2>
             <ul className="divide-y divide-[var(--border)]">
               {education.map((e, idx) => (
                 <EduItem key={idx} e={e} idx={idx} />
@@ -396,20 +405,20 @@ export default function App() {
         {/* Research / Publications */}
         <Section id="research" className="min-h-screen flex items-center">
           <div className="max-w-3xl mx-auto px-6 w-full">
-            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8">Research</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Research</h2>
 
             {/* --- Research Areas Section --- */}
-            <div className="mb-8 md:mb-10">
-              <h3 className="text-sm md:text-base font-medium mb-3 md:mb-4 text-[var(--muted)]">
+            <div className="mb-6 md:mb-7">
+              <h3 className="text-xs md:text-sm font-medium mb-2 md:mb-3 text-[var(--muted)]">
                 
               </h3>
-              <div className="flex flex-wrap gap-2 md:gap-3">
+              <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {researchAreas.map((area, idx) => (
                   <span 
                     key={idx} 
-                    className="px-3 py-1.5 md:px-4 md:py-2 
+                    className="px-2.5 py-1 md:px-3 md:py-1.5 
                                border border-[var(--border)] rounded-full 
-                               text-[11px] md:text-xs font-medium 
+                               text-[10px] md:text-[11px] font-medium 
                                hover:bg-[var(--border)] transition-colors cursor-default"
                   >
                     {area}
@@ -418,17 +427,17 @@ export default function App() {
               </div>
             </div>
 
-            <ol className="list-decimal ml-6 space-y-3 md:space-y-4">
+            <ol className="list-decimal ml-5 space-y-2 md:space-y-3">
               {publications.map((p, idx) => {
                 return (
                   <li key={idx}>
-                    <div className="leading-snug text-xs md:text-[13px]">
+                    <div className="leading-snug text-[10px] md:text-xs">
                       {p.authors} ({p.year}). <span className="italic">{p.paperTitle}</span>. {p.status}
                     </div>
                     
                     {/* The Link to the paper (if it exists) */}
                     {p.link && (
-                      <div className="mt-1 leading-snug text-[var(--muted-60)] text-[9px] md:text-[11px]">
+                      <div className="mt-1 leading-snug text-[var(--muted-60)] text-[8px] md:text-[10px]">
                         <a
                           className="underline decoration-2 underline-offset-4"
                           href={p.link}
@@ -449,16 +458,16 @@ export default function App() {
         {/* Connect */}
         <Section id="connect" className="min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
-            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8">Connect With Me</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-5 md:mb-6">Connect With Me</h2>
             <div className="flex items-center justify-center gap-4">
               <IconButton href="https://www.linkedin.com/in/rickey03/" label="LinkedIn">
-                <LinkedInIcon className="w-5 h-5 md:w-6 md:h-6" />
+                <LinkedInIcon className="w-4 h-4 md:w-5 md:h-5" />
               </IconButton>
               <IconButton href="https://github.com/dlwlsdn03" label="GitHub">
-                <GitHubIcon className="w-5 h-5 md:w-6 md:h-6" />
+                <GitHubIcon className="w-4 h-4 md:w-5 md:h-5" />
               </IconButton>
               <IconButton href="mailto:me@rickey.co.nz" label="Email">
-                <MailIcon className="w-5 h-5 md:w-6 md:h-6" />
+                <MailIcon className="w-4 h-4 md:w-5 md:h-5" />
               </IconButton>
             </div>
           </div>
