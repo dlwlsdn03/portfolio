@@ -14,15 +14,15 @@ export const professionalWork = [
     role: 'Analyst Intern',
     period: 'Feb 2024 - Dec 2025',
     summary: 'Private Equity and Search Fund',
-    logo: 'lvo2.jpg',
-    logoDark: 'lvo2-dark.jpg'
+    logo: 'lvo2.png',
+    logoDark: 'lvo2-dark.png'
   },
 ]
 
 
 export const researchWork = [
     {
-    company: 'Faculty of Business and Economics, University of Auckland',
+    company: 'Business and Economics, University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Researcher',
     period: 'Jan 2026 - Present',
@@ -31,7 +31,7 @@ export const researchWork = [
     logoDark: 'uoa-dark.jpg'
   },
   {
-    company: 'Faculty of Engineering and Design, University of Auckland',
+    company: 'Engineering and Design, University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
