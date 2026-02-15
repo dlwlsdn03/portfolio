@@ -8,6 +8,15 @@ export const professionalWork = [
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
+  {
+    company: 'LongView Owners',
+    link: 'https://www.longviewowners.co.nz/',
+    role: 'Analyst Intern',
+    period: 'Feb 2024 - Dec 2025',
+    summary: 'Private Equity and Search Fund',
+    logo: 'lvo2.jpg',
+    logoDark: 'lvo2-dark.jpg'
+  },
 ]
 
 
