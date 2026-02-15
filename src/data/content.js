@@ -1,13 +1,13 @@
 export const work = [
-  {
-    company: 'University of Auckland',
-    link: 'https://www.auckland.ac.nz',
-    role: 'Researcher',
-    period: 'Jan 2026 - Present',
-    summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance',
-    logo: 'uoa.jpg',
-    logoDark: 'uoa-dark.jpg'
-  },
+  // {
+  //   company: 'University of Auckland',
+  //   link: 'https://www.auckland.ac.nz',
+  //   role: 'Researcher',
+  //   period: 'Jan 2026 - Present',
+  //   summary: 'Faculty of Business and Economics\nDepartment of Accounting and Finance',
+  //   logo: 'uoa.jpg',
+  //   logoDark: 'uoa-dark.jpg'
+  // },
   {
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
@@ -17,21 +17,21 @@ export const work = [
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
+  // {
+  //   company: 'Corporate Value Associates',
+  //   link: 'https://www.corporate-value.com/',
+  //   role: 'Consultant Intern',
+  //   period: 'Oct 2025 - Dec 2025',
+  //   summary: 'Strategy Consulting',
+  //   logo: 'cva1.png',
+  //   logoDark: 'cva1-dark.png'
+  // },
   {
-    company: 'Corporate Value Associates',
-    link: 'https://www.corporate-value.com/',
-    role: 'Consultant Intern',
-    period: 'Oct 2025 - Dec 2025',
-    summary: 'Strategy Consulting',
-    logo: 'cva1.png',
-    logoDark: 'cva1-dark.png'
-  },
-  {
-    company: 'University of Auckland',
+    company: 'Faculty of Engineering and Design, University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Faculty of Engineering and Design\nDepartment of Electrical, Computer, and Software Engineering',
+    summary: 'Department of Electrical, Computer, and Software Engineering',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
