@@ -8,15 +8,15 @@ export const professionalWork = [
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
-  {
-    company: 'LongView Owners',
-    link: 'https://www.longviewowners.co.nz/',
-    role: 'Analyst Intern',
-    period: 'Feb 2024 - Dec 2025',
-    summary: 'Private Equity and Search Fund',
-    logo: 'lvo2.png',
-    logoDark: 'lvo2-dark.png'
-  },
+  // {
+  //   company: 'LongView Owners',
+  //   link: 'https://www.longviewowners.co.nz/',
+  //   role: 'Analyst Intern',
+  //   period: 'Feb 2024 - Dec 2025',
+  //   summary: 'Private Equity and Search Fund',
+  //   logo: 'lvo2.png',
+  //   logoDark: 'lvo2-dark.png'
+  // },
 ]
 
 
@@ -42,19 +42,19 @@ export const researchWork = [
 ]
 
 export const education = [
-  {
-    school: 'University of Auckland',
-    link: 'https://www.auckland.ac.nz',
-    degree: 'MCom, Finance',
-    period: '2026 - 2027',
-    // honours: "First Class Honours",
-    thesisLabel: 'Thesis (40,000 words):',
-    thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control"',
-    thesisLink: '/Masters Thesis.pdf',
-    details: 'Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\nProf. Peter Phillips (Methodological Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
-    logo: 'uoa.jpg',
-    logoDark: 'uoa-dark.jpg'
-  },
+  // {
+  //   school: 'University of Auckland',
+  //   link: 'https://www.auckland.ac.nz',
+  //   degree: 'MCom, Finance',
+  //   period: '2026 - 2027',
+  //   // honours: "First Class Honours",
+  //   thesisLabel: 'Thesis (40,000 words):',
+  //   thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control"',
+  //   thesisLink: '/Masters Thesis.pdf',
+  //   details: 'Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\nProf. Peter Phillips (Methodological Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
+  //   logo: 'uoa.jpg',
+  //   logoDark: 'uoa-dark.jpg'
+  // },
   {
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
