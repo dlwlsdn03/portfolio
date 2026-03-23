@@ -21,21 +21,21 @@ export const professionalWork = [
 
 
 export const researchWork = [
-    {
-    company: 'Business and Economics, University of Auckland',
-    link: 'https://www.auckland.ac.nz',
-    role: 'Researcher',
-    period: 'Jan 2026 - Present',
-    summary: 'Department of Accounting and Finance',
-    logo: 'uoa.jpg',
-    logoDark: 'uoa-dark.jpg'
-  },
+  //   {
+  //   company: 'Business and Economics, University of Auckland',
+  //   link: 'https://www.auckland.ac.nz',
+  //   role: 'Researcher',
+  //   period: 'Jan 2026 - Present',
+  //   summary: 'Department of Accounting and Finance',
+  //   logo: 'uoa.jpg',
+  //   logoDark: 'uoa-dark.jpg'
+  // },
   {
     company: 'Engineering and Design, University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
@@ -61,10 +61,10 @@ export const education = [
     degree: 'BCom(Hons), Finance',
     period: '2022 - 2025',
     honours: 'First Class Honours',
-    thesisLabel: 'Dissertation (10,000 words):',
+    thesisLabel: 'Dissertation:',
     thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control"',
     thesisLink: '/Honours Dissertation.pdf',
-    details: 'Dr. Justin Case (Main Supervisor)\n\n Awards:\n First in Course Award in Research Methods in Finance\n First in Course Award in Financial Machine Learning\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Leadership and Service:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in Econometric Methods\n Class Representative in Financial Machine Learning\n\nProfessional Development:\nMcKinsey Forward Program\nStartmate Student Fellowship',
+    details: 'Supervised by Dr. Justin Case\n\n Awards:\n Beta Gamma Sigma Lifetime Member (Top 10%)\n First in Course Award in Research Methods in Finance (FIN701)\n First in Course Award in Financial Machine Learning (FIN710)\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Leadership and Service:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in Econometric Methods\n Class Representative in Financial Machine Learning\n\nProfessional Development:\nMcKinsey Forward Program\nStartmate Student Fellowship',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
