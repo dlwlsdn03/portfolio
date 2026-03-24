@@ -35,7 +35,7 @@ export const researchWork = [
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     period: 'Feb 2024 - Dec 2025',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn\n\nIEEE Service Award 2025\nIEEE Service Award 2024',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
