@@ -102,7 +102,7 @@ function ThemeToggle() {
             aria-selected={mode === opt.value}
             onClick={() => { setMode(opt.value); setOpen(false) }}
             className={`flex items-center justify-between px-3 py-2 cursor-pointer
-                        text-[10px] md:text-xs font-medium
+                        text-[10px] md:text-xs
                         transition-colors duration-150 hover:bg-[var(--border)]
                         ${mode === opt.value
                           ? 'text-[color:var(--fg)]'
@@ -282,7 +282,7 @@ function CompanyGroup({ group }) {
                 aria-controls={descId}
                 aria-expanded={open}
                 className="flex items-center justify-between w-full text-left bg-transparent p-0 text-[10px] md:text-xs lg:text-sm
-                           focus:outline-none focus:ring-transparent font-medium
+                           focus:outline-none focus:ring-transparent
                            hover:opacity-70 transition-opacity"
               >
                 <span>{role.role}</span>
@@ -360,7 +360,7 @@ function EduItem({ e, idx }) {
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
           aria-controls={descId}
-          className="flex items-center justify-between w-full text-left p-0 bg-transparent text-[10px] md:text-xs lg:text-sm font-medium
+          className="flex items-center justify-between w-full text-left p-0 bg-transparent text-[10px] md:text-xs lg:text-sm
                      focus:outline-none focus:ring-transparent
                      hover:opacity-70 transition-opacity"
         >
@@ -490,7 +490,7 @@ export default function App() {
 
             {/* --- Research Areas Section --- */}
             <div className="mb-6 md:mb-7 lg:mb-10">
-              <h3 className="text-xs md:text-sm lg:text-base font-medium mb-2 md:mb-3 lg:mb-4 text-[var(--muted)]">
+              <h3 className="text-xs md:text-sm lg:text-base mb-2 md:mb-3 lg:mb-4 text-[var(--muted)]">
                 
               </h3>
               <div className="flex flex-wrap gap-1.5 md:gap-2 lg:gap-3">
@@ -499,7 +499,7 @@ export default function App() {
                     key={idx} 
                     className="px-2.5 py-1 md:px-3 md:py-1.5 lg:px-4 lg:py-2
                                border border-[var(--border)] rounded-full 
-                               text-[10px] md:text-[11px] lg:text-sm font-medium 
+                               text-[10px] md:text-[11px] lg:text-sm
                                hover:bg-[var(--border)] transition-colors cursor-default"
                   >
                     {area}
