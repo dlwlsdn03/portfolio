@@ -386,7 +386,7 @@ function EduItem({ e, idx }) {
         >
           <div className="text-[10px] md:text-[11px] lg:text-sm leading-relaxed">
             {/* 1. Honours Grade (if applicable) */}
-            {e.honours && <p className="mb-4 font-medium">{e.honours}</p>}
+            {e.honours && <p className="mb-4">{e.honours}</p>}
 
             {/* 2. Clickable Dissertation/Thesis Title */}
             {e.thesisTitle && (
@@ -396,7 +396,7 @@ function EduItem({ e, idx }) {
                   href={e.thesisLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="italic hover:opacity-70 transition-opacity font-medium"
+                  className="italic hover:opacity-70 transition-opacity"
                 >
                   {e.thesisTitle}
                 </a>
@@ -456,7 +456,7 @@ export default function App() {
       
         {/* Landing */}
         <Section id="home" className="min-h-screen flex items-center justify-center">
-          <h1 className="text-center font-bold tracking-tight text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="text-center font-bold tracking-tight text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
             Hi, I&apos;m Rickey
           </h1>
         </Section>
