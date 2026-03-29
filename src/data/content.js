@@ -63,7 +63,7 @@ export const education = [
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     degree: 'BCom(Hons), Finance',
-    startDate: '2022-01',
+    startDate: '2022-02',
     endDate: '2025-12',
     honours: 'First Class Honours',
     thesisLabel: 'Dissertation:',
