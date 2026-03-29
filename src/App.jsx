@@ -517,23 +517,26 @@ export default function App() {
               </div>
             </div>
 
-            <ol className="list-decimal ml-5 lg:ml-6 space-y-2 md:space-y-3 lg:space-y-5">
+            <ol className="list-decimal ml-5 lg:ml-6 space-y-4 md:space-y-5 lg:space-y-7">
               {publications.map((p, idx) => (
                 <li key={idx}>
                   <div className="leading-snug text-[10px] md:text-xs lg:text-sm">
-                    {p.authors} ({p.year}). <span className="italic">{p.paperTitle}</span>. {p.status}
+                    {p.link
+                      ? <a href={p.link} target="_blank" rel="noreferrer" className="hover:opacity-70 transition-opacity">
+                          &ldquo;{p.paperTitle}&rdquo;
+                        </a>
+                      : <>&ldquo;{p.paperTitle}&rdquo;</>
+                    }
+                    {p.coauthor && (
+                      <span className="font-normal"> (with {p.coauthor})</span>
+                    )}
                   </div>
-                  
-                  {p.link && (
-                    <div className="mt-1 leading-snug text-[var(--muted-60)] text-[8px] md:text-[10px] lg:text-xs">
-                      <a
-                        className="underline decoration-2 underline-offset-4"
-                        href={p.link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        View Paper
-                      </a>
+                  {(p.status || p.journal) && (
+                    <div className="italic text-[10px] md:text-xs lg:text-sm mt-0.5">
+                      {p.status && p.journal
+                        ? <>{p.status} <span className="underline">{p.journal}</span></>
+                        : p.status || p.journal
+                      }
                     </div>
                   )}
                 </li>
