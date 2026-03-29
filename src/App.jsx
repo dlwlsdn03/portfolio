@@ -40,6 +40,23 @@ function ThemeToggle() {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
 
+  // Track the actual resolved theme (needed for system mode icon)
+  const [resolvedDark, setResolvedDark] = useState(() =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  )
+
+  useEffect(() => {
+    if (mode === 'system') {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)')
+      setResolvedDark(mq.matches)
+      const handler = (e) => setResolvedDark(e.matches)
+      mq.addEventListener('change', handler)
+      return () => mq.removeEventListener('change', handler)
+    } else {
+      setResolvedDark(mode === 'dark')
+    }
+  }, [mode])
+
   useEffect(() => {
     const handler = (e) => {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false)
@@ -54,11 +71,11 @@ function ThemeToggle() {
     { value: 'system', label: 'System' },
   ]
 
-  const icon = mode === 'dark' ? '/icons/sun.png' : '/icons/moon.png'
+  const icon = resolvedDark ? '/icons/sun.png' : '/icons/moon.png'
 
   return (
     <div ref={ref} className="fixed top-4 right-4 z-50">
-      {/* Trigger button — same icon as before, just adds a chevron */}
+      {/* Trigger button */}
       <button
         type="button"
         onClick={() => setOpen(v => !v)}
@@ -146,14 +163,11 @@ function ScrollIndicator({ containerRef }) {
     }
 
     const onScroll = () => {
-      // 1. Show the indicator immediately when scrolling starts
       setIsVisible(true)
 
-      // 2. Update the progress bar position
       cancelAnimationFrame(rafId)
       rafId = requestAnimationFrame(updateProgress)
 
-      // 3. Clear the existing timer and start a new one to hide it after 2 seconds of idle
       if (timerRef.current) clearTimeout(timerRef.current)
       timerRef.current = setTimeout(() => {
         setIsVisible(false)
@@ -200,20 +214,13 @@ function IconButton({ href, label, children }) {
       rel={href?.startsWith('http') ? 'noreferrer' : undefined}
       className="group inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16
                  border rounded-full text-[color:var(--fg)] bg-transparent
-                 
-                 /* 1. The Physics */
                  transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-
-                 /* 2. Parent Hover (Lift + MONOCHROME Glow + Ring) */
                  hover:-translate-y-1.5 
                  hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_10px_20px_-10px_rgba(255,255,255,0.2)]
                  hover:ring-4 hover:ring-black/5 dark:hover:ring-white/10
-                 
-                 /* 3. Click Effect */
                  active:scale-90 active:ring-0 focus:outline-none"
       style={{ borderColor: 'var(--border)' }}
     >
-      {/* 4. Child Hover (Scale icon up slightly) */}
       <span className="transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
                        group-hover:scale-110">
         {children}
@@ -385,10 +392,8 @@ function EduItem({ e, idx }) {
                       ${open ? 'max-h-[800px] mt-2' : 'max-h-0'}`}
         >
           <div className="text-[10px] md:text-[11px] lg:text-sm leading-relaxed">
-            {/* 1. Honours Grade (if applicable) */}
             {e.honours && <p className="mb-4">{e.honours}</p>}
 
-            {/* 2. Clickable Dissertation/Thesis Title */}
             {e.thesisTitle && (
               <p className="">
                 <span className="">{e.thesisLabel}</span>{' '}
@@ -403,7 +408,6 @@ function EduItem({ e, idx }) {
               </p>
             )}
 
-            {/* 3. The rest of the details (Supervisors, Awards, etc.) */}
             <p className="whitespace-pre-line">
               {e.details}
             </p>
@@ -434,7 +438,6 @@ function ExperienceSubsection({ title, workArray }) {
 export default function App() {
   const scrollContainerRef = useRef(null)
 
-  // Research areas data
   const researchAreas = [
     "Financial Econometrics",
     "Econometric Theory",
@@ -461,7 +464,7 @@ export default function App() {
           </h1>
         </Section>
 
-        {/* Experience - Now Split */}
+        {/* Experience */}
         <Section id="experience" className="min-h-screen flex items-center">
           <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-7 lg:mb-10">Experience</h2>
@@ -488,11 +491,7 @@ export default function App() {
           <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-8">Research</h2>
 
-            {/* --- Research Areas Section --- */}
             <div className="mb-6 md:mb-7 lg:mb-10">
-              <h3 className="text-xs md:text-sm lg:text-base mb-2 md:mb-3 lg:mb-4 text-[var(--muted)]">
-                
-              </h3>
               <div className="flex flex-wrap gap-1.5 md:gap-2 lg:gap-3">
                 {researchAreas.map((area, idx) => (
                   <span 
@@ -509,29 +508,26 @@ export default function App() {
             </div>
 
             <ol className="list-decimal ml-5 lg:ml-6 space-y-2 md:space-y-3 lg:space-y-5">
-              {publications.map((p, idx) => {
-                return (
-                  <li key={idx}>
-                    <div className="leading-snug text-[10px] md:text-xs lg:text-sm">
-                      {p.authors} ({p.year}). <span className="italic">{p.paperTitle}</span>. {p.status}
+              {publications.map((p, idx) => (
+                <li key={idx}>
+                  <div className="leading-snug text-[10px] md:text-xs lg:text-sm">
+                    {p.authors} ({p.year}). <span className="italic">{p.paperTitle}</span>. {p.status}
+                  </div>
+                  
+                  {p.link && (
+                    <div className="mt-1 leading-snug text-[var(--muted-60)] text-[8px] md:text-[10px] lg:text-xs">
+                      <a
+                        className="underline decoration-2 underline-offset-4"
+                        href={p.link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View Paper
+                      </a>
                     </div>
-                    
-                    {/* The Link to the paper (if it exists) */}
-                    {p.link && (
-                      <div className="mt-1 leading-snug text-[var(--muted-60)] text-[8px] md:text-[10px] lg:text-xs">
-                        <a
-                          className="underline decoration-2 underline-offset-4"
-                          href={p.link}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          View Paper
-                        </a>
-                      </div>
-                    )}
-                  </li>
-                )
-              })}
+                  )}
+                </li>
+              ))}
             </ol>
           </div>
         </Section>
