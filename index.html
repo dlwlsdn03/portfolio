@@ -66,6 +66,11 @@
         'helvetica': "'Helvetica Neue', Helvetica, Arial, sans-serif"
       };
 
+      document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(el => {
+      el.style.setProperty('font-family', "'Fraunces', serif", 'important');
+      el.style.setProperty('font-weight', '400', 'important');
+      });
+
       // Apply the selected font with !important to override Tailwind
       const selectedFont = fontFamilies[ACTIVE_FONT] || fontFamilies['inter'];
       document.body.style.setProperty('font-family', selectedFont, "important");

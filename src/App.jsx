@@ -4,6 +4,14 @@ import Section from './components/Section.jsx'
 import { professionalWork, researchWork, education, publications } from './data/content.js'
 import { LinkedInIcon, GitHubIcon, MailIcon } from './components/Icons.jsx'
 
+function formatPeriod(startDate, endDate) {
+  const fmt = (d) => {
+    const [year, month] = d.split('-')
+    return new Date(year, month - 1).toLocaleDateString('en-NZ', { month: 'short', year: 'numeric' })
+  }
+  return `${fmt(startDate)} – ${endDate ? fmt(endDate) : 'Present'}`
+}
+
 /* ---------- Theme toggle (persists in localStorage) ---------- */
 function useTheme() {
   const [mode, setMode] = useState(() => {
@@ -304,7 +312,7 @@ function CompanyGroup({ group }) {
               </button>
 
               <p className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)] mt-0.5">
-                {role.period}
+                {formatPeriod(role.startDate, role.endDate)}
               </p>
 
               <div
@@ -383,7 +391,7 @@ function EduItem({ e, idx }) {
         </button>
         
         <p className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)] mt-0.5">
-          {e.period}
+          {formatPeriod(e.startDate, e.endDate)}
         </p>
 
         <div
@@ -418,16 +426,19 @@ function EduItem({ e, idx }) {
   )
 }
 
-function ExperienceSubsection({ title, workArray }) {
+function ExperienceSubsection({ workArray }) {
   if (!workArray || workArray.length === 0) return null
-  
+
+  const sorted = [...workArray].sort((a, b) => {
+    const aEnd = a.endDate ?? '9999-99'
+    const bEnd = b.endDate ?? '9999-99'
+    return bEnd.localeCompare(aEnd) || b.startDate.localeCompare(a.startDate)
+  })
+
   return (
     <div className="mb-7 md:mb-8 lg:mb-12">
-      <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-1.5 md:mb-2 lg:mb-3 text-[var(--muted)]">
-        {title}
-      </h3>
       <ul className="divide-y divide-[var(--border)]">
-        {groupWorkByCompany(workArray).map((group, idx) => (
+        {groupWorkByCompany(sorted).map((group, idx) => (
           <CompanyGroup key={idx} group={group} />
         ))}
       </ul>
@@ -469,8 +480,7 @@ export default function App() {
           <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-7 lg:mb-10">Experience</h2>
             
-            <ExperienceSubsection title="Academic" workArray={researchWork} />
-            <ExperienceSubsection title="Non-Academic" workArray={professionalWork} />
+            <ExperienceSubsection workArray={[...researchWork, ...professionalWork]} />
           </div>
         </Section>
 

@@ -3,7 +3,8 @@ export const professionalWork = [
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
     role: 'Consultant',
-    period: 'Oct 2025 - Present',
+    startDate: '2025-10',
+    endDate: null,
     summary: 'Strategy Consulting, Deals Advisory',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
@@ -12,29 +13,31 @@ export const professionalWork = [
   //   company: 'LongView Owners',
   //   link: 'https://www.longviewowners.co.nz/',
   //   role: 'Analyst Intern',
-  //   period: 'Feb 2024 - Dec 2025',
+  //   startDate: '2024-02',
+  //   endDate: '2025-12',
   //   summary: 'Private Equity and Search Fund',
   //   logo: 'lvo2.png',
   //   logoDark: 'lvo2-dark.png'
   // },
 ]
 
-
 export const researchWork = [
-  //   {
+  // {
   //   company: 'Business and Economics, University of Auckland',
   //   link: 'https://www.auckland.ac.nz',
   //   role: 'Researcher',
-  //   period: 'Jan 2026 - Present',
+  //   startDate: '2026-01',
+  //   endDate: null,
   //   summary: 'Department of Accounting and Finance',
   //   logo: 'uoa.jpg',
   //   logoDark: 'uoa-dark.jpg'
   // },
   {
-    company: 'Engineering and Design, University of Auckland',
+    company: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
-    period: 'Feb 2024 - Dec 2025',
+    startDate: '2024-02',
+    endDate: '2025-12',
     summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn\n\nIEEE Service Award 2025\nIEEE Service Award 2024',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
@@ -46,8 +49,9 @@ export const education = [
   //   school: 'University of Auckland',
   //   link: 'https://www.auckland.ac.nz',
   //   degree: 'MCom, Finance',
-  //   period: '2026 - 2027',
-  //   // honours: "First Class Honours",
+  //   startDate: '2026-01',
+  //   endDate: '2027-12',
+  //   honours: null,
   //   thesisLabel: 'Thesis (40,000 words):',
   //   thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control"',
   //   thesisLink: '/Masters Thesis.pdf',
@@ -59,7 +63,8 @@ export const education = [
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     degree: 'BCom(Hons), Finance',
-    period: '2022 - 2025',
+    startDate: '2022-01',
+    endDate: '2025-12',
     honours: 'First Class Honours',
     thesisLabel: 'Dissertation:',
     thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control"',
@@ -76,7 +81,7 @@ export const publications = [
     year: '2026',
     paperTitle: 'Statistical model memory selection in volatility forecasting',
     status: 'Working paper.',
-    link: '', 
+    link: '',
   },
   {
     authors: 'Lee, R.',
