@@ -2,7 +2,7 @@ export const professionalWork = [
   {
     company: 'Corporate Value Associates',
     link: 'https://www.corporate-value.com/',
-    role: 'Consultant',
+    role: 'Strategy Consultant',
     startDate: '2025-10',
     endDate: null,
     summary: 'Strategy Consulting, Deals Advisory',
