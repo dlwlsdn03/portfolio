@@ -67,7 +67,7 @@ export const education = [
     endDate: '2025-11',
     honours: 'First Class Honours',
     thesisLabel: 'Dissertation:',
-    thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control"',
+    thesisTitle: '"Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"',
     thesisLink: '/Honours Dissertation.pdf',
     details: 'Supervised by Dr. Justin Case\n\n Awards:\n Beta Gamma Sigma Lifetime Member (Top 10%)\n First in Course Award in Research Methods in Finance (FIN701)\n First in Course Award in Financial Machine Learning (FIN710)\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Leadership and Service:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in Econometric Methods (ECON720)\n Class Representative in Financial Machine Learning (FIN710)\n\nProfessional Development:\nMcKinsey Forward Program\nStartmate Student Fellowship',
     logo: 'uoa.jpg',
