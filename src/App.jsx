@@ -148,68 +148,138 @@ function ThemeToggle() {
   )
 }
 
-function ScrollIndicator({ containerRef }) {
-  const progressBarRef = useRef(null)
+const SECTION_IDS = ['home', 'experience', 'education', 'research', 'connect']
+
+function LiquidGlassNav({ containerRef }) {
   const [isVisible, setIsVisible] = useState(false)
   const timerRef = useRef(null)
+  const currentIdxRef = useRef(0)
+  const animatingRef = useRef(false)
+  const dotsRef = useRef([])
+
+  const animateTo = (targetIdx) => {
+    if (animatingRef.current) return
+    const from = currentIdxRef.current
+    if (from === targetIdx) return
+
+    animatingRef.current = true
+    const step = targetIdx > from ? 1 : -1
+    let i = from
+
+    const hop = () => {
+      const prev = i
+      i += step
+      currentIdxRef.current = i
+
+      if (dotsRef.current[i]) {
+        dotsRef.current[i].style.width = '14px'
+        dotsRef.current[i].style.height = '14px'
+      }
+
+      setTimeout(() => {
+        if (dotsRef.current[prev]) {
+          dotsRef.current[prev].style.width = '8px'
+          dotsRef.current[prev].style.height = '8px'
+        }
+        if (i !== targetIdx) {
+          setTimeout(hop, 55)
+        } else {
+          animatingRef.current = false
+        }
+      }, 55)
+    }
+
+    hop()
+  }
 
   useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
+    const container = containerRef.current
+    if (!container) return
 
-    let rafId
+    const sections = SECTION_IDS.map(id => document.getElementById(id)).filter(Boolean)
 
-    const updateProgress = () => {
-      const { scrollTop, scrollHeight, clientHeight } = el
-      let p = 0
-      if (scrollHeight > clientHeight) {
-        p = (scrollTop / (scrollHeight - clientHeight)) * 100
-      }
-      if (progressBarRef.current) {
-        progressBarRef.current.style.width = `${p}%`
-      }
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            const idx = SECTION_IDS.indexOf(entry.target.id)
+            if (idx !== -1) {
+              animateTo(idx)
+              setIsVisible(true)
+              if (timerRef.current) clearTimeout(timerRef.current)
+              timerRef.current = setTimeout(() => setIsVisible(false), 2000)
+            }
+          }
+        })
+      },
+      { root: container, threshold: 0.5 }
+    )
 
-    const onScroll = () => {
-      setIsVisible(true)
-
-      cancelAnimationFrame(rafId)
-      rafId = requestAnimationFrame(updateProgress)
-
-      if (timerRef.current) clearTimeout(timerRef.current)
-      timerRef.current = setTimeout(() => {
-        setIsVisible(false)
-      }, 2000) 
-    }
-
-    el.addEventListener('scroll', onScroll, { passive: true })
-    updateProgress()
-
+    sections.forEach(s => observer.observe(s))
     return () => {
-      el.removeEventListener('scroll', onScroll)
-      cancelAnimationFrame(rafId)
+      observer.disconnect()
       if (timerRef.current) clearTimeout(timerRef.current)
     }
   }, [containerRef])
 
   return (
-    <div 
-      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-40 p-[2px] rounded-full
-                  backdrop-blur-xl bg-white/20 dark:bg-white/10
-                  shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),0_8px_16px_rgba(0,0,0,0.1)]
-                  border border-white/30 transition-opacity duration-500 ease-in-out
-                  ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-    >
-      <div className="w-24 h-1 lg:w-36 lg:h-1.5 rounded-full overflow-hidden bg-white/30 dark:bg-white/10
-                      shadow-[inset_0_0.5px_0_rgba(0,0,0,0.2)]"
+    <>
+      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+        <defs>
+          <filter id="goo-nav" x="-20%" y="-20%" width="140%" height="140%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 14 -5"
+              result="goo"
+            />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+
+      <div
+        className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-40
+                    transition-opacity duration-500 ease-in-out
+                    ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
-        <div 
-          ref={progressBarRef}
-          className="h-full bg-[var(--fg)] opacity-80 transition-none ease-out will-change-[width]"
-          style={{ width: '0%' }}
-        />
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '8px 16px',
+            borderRadius: '100px',
+            background: 'rgba(255,255,255,0.18)',
+            border: '0.5px solid rgba(255,255,255,0.35)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.4), 0 4px 24px rgba(0,0,0,0.12)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', filter: 'url(#goo-nav)' }}>
+            {SECTION_IDS.map((_, idx) => (
+              <div
+                key={idx}
+                ref={el => dotsRef.current[idx] = el}
+                style={{
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  background: 'rgba(255,255,255,0.95)',
+                  transition: 'width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1)',
+                  width: idx === 0 ? '14px' : '8px',
+                  height: idx === 0 ? '14px' : '8px',
+                }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -459,7 +529,7 @@ export default function App() {
   return (
     <>
       <ThemeToggle />
-      <ScrollIndicator containerRef={scrollContainerRef} />
+      <LiquidGlassNav containerRef={scrollContainerRef} />
 
       <div 
         ref={scrollContainerRef}

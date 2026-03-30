@@ -10,14 +10,14 @@ export const professionalWork = [
     logoDark: 'cva1-dark.png'
   },
   // {
-  //   company: 'LongView Owners',
-  //   link: 'https://www.longviewowners.co.nz/',
-  //   role: 'Analyst Intern',
-  //   startDate: '2024-02',
-  //   endDate: '2025-12',
-  //   summary: 'Private Equity and Search Fund',
-  //   logo: 'lvo2.png',
-  //   logoDark: 'lvo2-dark.png'
+  //   // company: 'LongView Owners',
+  //   // link: 'https://www.longviewowners.co.nz/',
+  //   // role: 'Investment Intern',
+  //   // startDate: '2024-08',
+  //   // endDate: '2025-10',
+  //   // summary: 'Private Equity and Search Fund',
+  //   // logo: 'lvo2.png',
+  //   // logoDark: 'lvo2-dark.png'
   // },
 ]
 
@@ -37,7 +37,7 @@ export const researchWork = [
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     startDate: '2024-02',
-    endDate: '2025-12',
+    endDate: '2025-11',
     summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn\n\nIEEE Service Award 2025\nIEEE Service Award 2024',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
