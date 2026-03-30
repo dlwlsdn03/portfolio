@@ -22,6 +22,10 @@ html { scroll-behavior: smooth; }
   /* Fonts */
   --font-default: 'Inter', system-ui, sans-serif;
   --font-latex: 'CMU Serif', serif;
+
+  --nav-dot: rgb(60, 60, 60);
+  --nav-pill-bg: rgba(0, 0, 0, 0.06);
+  --nav-pill-border: rgba(0, 0, 0, 0.15);
 }
 
 .dark {
@@ -30,7 +34,11 @@ html { scroll-behavior: smooth; }
   --muted: rgba(255,255,255,0.85);
   --muted-60: rgba(255,255,255,0.65);
   --border: rgba(255,255,255,0.14);
-  --accent: #ffffff;           
+  --accent: #ffffff;        
+  
+  --nav-dot: rgb(255, 255, 255);
+  --nav-pill-bg: rgba(255, 255, 255, 0.14);
+  --nav-pill-border: rgba(255, 255, 255, 0.25);
 }
 
 /* 2. Apply default font globally */

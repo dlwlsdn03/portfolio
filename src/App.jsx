@@ -254,11 +254,11 @@ function LiquidGlassNav({ containerRef }) {
             gap: '10px',
             padding: '8px 16px',
             borderRadius: '100px',
-            background: 'rgba(255,255,255,0.18)',
-            border: '0.5px solid rgba(255,255,255,0.35)',
+            background: 'var(--nav-pill-bg)',
+            border: '0.5px solid var(--nav-pill-border)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
-            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.4), 0 4px 24px rgba(0,0,0,0.12)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 24px rgba(0,0,0,0.08)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', filter: 'url(#goo-nav)' }}>
@@ -269,7 +269,7 @@ function LiquidGlassNav({ containerRef }) {
                 style={{
                   borderRadius: '50%',
                   flexShrink: 0,
-                  background: 'rgba(255,255,255,0.95)',
+                  background: 'var(--nav-dot)',
                   transition: 'width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1)',
                   width: idx === 0 ? '14px' : '8px',
                   height: idx === 0 ? '14px' : '8px',
