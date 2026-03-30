@@ -8,8 +8,8 @@ export default defineConfig({
       name: 'cache-bust-favicon',
       transformIndexHtml(html) {
         return html.replace(
-          /(<link rel="icon"[^>]*href="[^"?]+)(">)/,
-          `$1?v=${Date.now()}$2`
+          /(<link rel="icon"[^>]*href=")([^"?]+)(")/,
+          `$1$2?v=${Date.now()}$3`
         )
       }
     }
