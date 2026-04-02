@@ -520,10 +520,9 @@ export default function App() {
   const scrollContainerRef = useRef(null)
 
   const researchAreas = [
+    "Financial Economics",
     "Financial Econometrics",
     "Econometric Theory",
-    "Empirical Asset Pricing",
-    "Statistical Theory"
   ]
 
   return (
