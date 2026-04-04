@@ -373,7 +373,7 @@ function CompanyGroup({ group }) {
                 <span className="min-w-0 pr-3">{role.role}</span>
 
                 <span className="flex items-center gap-2 shrink-0">
-                  <span className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+                  <span className="w-[7.75rem] md:w-[8.5rem] lg:w-[9rem] text-right tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
                     {formatPeriod(role.startDate, role.endDate)}
                   </span>
 
@@ -454,7 +454,7 @@ function EduItem({ e, idx }) {
           <span className="min-w-0 pr-3">{e.degree}</span>
 
           <span className="flex items-center gap-2 shrink-0">
-            <span className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+            <span className="w-[7.75rem] md:w-[8.5rem] lg:w-[9rem] text-right tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
               {formatPeriod(e.startDate, e.endDate)}
             </span>
 
