@@ -12,6 +12,27 @@ function formatPeriod(startDate, endDate) {
   return `${fmt(startDate)} – ${endDate ? fmt(endDate) : 'Present'}`
 }
 
+function formatYear(date) {
+  return date ? date.split('-')[0] : ''
+}
+
+function compareYearMonthDesc(a, b) {
+  if (a === b) return 0
+  if (!a) return -1
+  if (!b) return 1
+  return b.localeCompare(a)
+}
+
+function DateRange({ startDate, endDate }) {
+  return (
+    <span className="inline-flex items-center shrink-0 tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+      <span className="w-[4ch] text-right">{formatYear(startDate)}</span>
+      <span aria-hidden="true" className="w-[1.5ch] text-center">-</span>
+      <span className="w-[4ch] text-left">{formatYear(endDate)}</span>
+    </span>
+  )
+}
+
 /* ---------- Theme toggle (persists in localStorage) ---------- */
 function useTheme() {
   const [mode, setMode] = useState(() => {
@@ -373,12 +394,10 @@ function CompanyGroup({ group }) {
                 <span className="min-w-0 pr-3">{role.role}</span>
 
                 <span className="flex items-center gap-2 shrink-0">
-                  <span className="w-[7.75rem] md:w-[8.5rem] lg:w-[9rem] text-right tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
-                    {formatPeriod(role.startDate, role.endDate)}
-                  </span>
+                  <DateRange startDate={role.startDate} endDate={role.endDate} />
 
                   <svg
-                    className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                    className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-200 ease-out
                                ${open ? 'rotate-180' : 'rotate-0'}`}
                     fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
                   >
@@ -389,12 +408,16 @@ function CompanyGroup({ group }) {
 
               <div
                 id={descId}
-                className={`overflow-hidden transition-[max-height] duration-300 ease-out
+                className={`overflow-hidden transition-[max-height,margin] duration-250 ease-out
                             ${open ? 'max-h-96 mt-2' : 'max-h-0'}`}
               >
-                <p className="text-[10px] md:text-[11px] lg:text-sm leading-relaxed whitespace-pre-line">
-                  {role.summary}
-                </p>
+                <div
+                  className={`text-[10px] md:text-[11px] lg:text-sm leading-relaxed whitespace-pre-line
+                              transition-[opacity,transform] duration-200 ease-out
+                              ${open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'}`}
+                >
+                  <p>{role.summary}</p>
+                </div>
               </div>
             </li>
           )
@@ -454,12 +477,10 @@ function EduItem({ e, idx }) {
           <span className="min-w-0 pr-3">{e.degree}</span>
 
           <span className="flex items-center gap-2 shrink-0">
-            <span className="w-[7.75rem] md:w-[8.5rem] lg:w-[9rem] text-right tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
-              {formatPeriod(e.startDate, e.endDate)}
-            </span>
+            <DateRange startDate={e.startDate} endDate={e.endDate} />
 
             <svg
-              className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+              className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-200 ease-out
                          ${open ? 'rotate-180' : 'rotate-0'}`}
               fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
             >
@@ -470,10 +491,14 @@ function EduItem({ e, idx }) {
 
         <div
           id={descId}
-          className={`overflow-hidden transition-[max-height] duration-300 ease-out
+          className={`overflow-hidden transition-[max-height,margin] duration-250 ease-out
                       ${open ? 'max-h-[800px] mt-2' : 'max-h-0'}`}
         >
-          <div className="text-[10px] md:text-[11px] lg:text-sm leading-relaxed">
+          <div
+            className={`text-[10px] md:text-[11px] lg:text-sm leading-relaxed
+                        transition-[opacity,transform] duration-200 ease-out
+                        ${open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'}`}
+          >
             {e.honours && <p className="mb-4">{e.honours}</p>}
 
             {e.thesisTitle && (
@@ -504,9 +529,7 @@ function ExperienceSubsection({ workArray }) {
   if (!workArray || workArray.length === 0) return null
 
   const sorted = [...workArray].sort((a, b) => {
-    const aEnd = a.endDate ?? '9999-99'
-    const bEnd = b.endDate ?? '9999-99'
-    return bEnd.localeCompare(aEnd) || b.startDate.localeCompare(a.startDate)
+    return compareYearMonthDesc(a.endDate, b.endDate) || compareYearMonthDesc(a.startDate, b.startDate)
   })
 
   return (
