@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <link rel="icon" href="/favicon.svg?v=1775282471404" />
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
+    <title>Rickey</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;700&family=Schibsted+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css" />
+
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet" />
+
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&display=swap" rel="stylesheet" />
+
+    <style>
+      @font-face {
+        font-family: 'Neue Montreal';
+        src: url('/fonts/NeueMontreal-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Neue Montreal';
+        src: url('/fonts/NeueMontreal-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-YjeocBn4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BUoTwxxt.css">
+  </head>
+  
+  <body class="antialiased" style="background: var(--bg); color: var(--fg);">
+    <div id="root"></div>
+
+    <script>
+      // ==========================================
+      // CHOOSE YOUR FONT HERE:
+      // Options: 'computer-modern', 'dm-sans', 'inter', 'jetbrains', 'manrope', 'neue-montreal', 'schibsted', 'google-sans', 'satoshi'
+      // ==========================================
+      const ACTIVE_FONT = 'helvetica'; 
+      
+      // Font configurations
+      const fontFamilies = {
+        'computer-modern': "'Computer Modern Serif', serif",
+        'dm-sans': "'DM Sans', sans-serif",
+        'inter': "'Inter', sans-serif",
+        'jetbrains': "'JetBrains Mono', monospace",
+        'manrope': "'Manrope', sans-serif",
+        'neue-montreal': "'Neue Montreal', sans-serif",
+        'schibsted': "'Schibsted Grotesk', sans-serif",
+        'google-sans': "'Google Sans', sans-serif",
+        'satoshi': "'Satoshi', sans-serif",
+        'helvetica': "'Helvetica Neue', Helvetica, Arial, sans-serif"
+      };
+
+      document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(el => {
+      el.style.setProperty('font-family', "'Fraunces', serif", 'important');
+      el.style.setProperty('font-weight', '400', 'important');
+      });
+
+      // Apply the selected font with !important to override Tailwind
+      const selectedFont = fontFamilies[ACTIVE_FONT] || fontFamilies['inter'];
+      document.body.style.setProperty('font-family', selectedFont, "important");
+    </script>
+  </body>
+</html>

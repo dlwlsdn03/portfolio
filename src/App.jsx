@@ -370,20 +370,22 @@ function CompanyGroup({ group }) {
                            focus:outline-none focus:ring-transparent
                            hover:opacity-70 transition-opacity"
               >
-                <span>{role.role}</span>
-                
-                <svg 
-                  className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                             ${open ? 'rotate-180' : 'rotate-0'}`} 
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                <span className="min-w-0 pr-3">{role.role}</span>
 
-              <p className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)] mt-0.5">
-                {formatPeriod(role.startDate, role.endDate)}
-              </p>
+                <span className="flex items-center gap-2 shrink-0">
+                  <span className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+                    {formatPeriod(role.startDate, role.endDate)}
+                  </span>
+
+                  <svg
+                    className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                               ${open ? 'rotate-180' : 'rotate-0'}`}
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </button>
 
               <div
                 id={descId}
@@ -449,20 +451,22 @@ function EduItem({ e, idx }) {
                      focus:outline-none focus:ring-transparent
                      hover:opacity-70 transition-opacity"
         >
-          <span>{e.degree}</span>
+          <span className="min-w-0 pr-3">{e.degree}</span>
 
-          <svg 
-            className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                       ${open ? 'rotate-180' : 'rotate-0'}`} 
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
+          <span className="flex items-center gap-2 shrink-0">
+            <span className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+              {formatPeriod(e.startDate, e.endDate)}
+            </span>
+
+            <svg
+              className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                         ${open ? 'rotate-180' : 'rotate-0'}`}
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
         </button>
-        
-        <p className="text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)] mt-0.5">
-          {formatPeriod(e.startDate, e.endDate)}
-        </p>
 
         <div
           id={descId}
