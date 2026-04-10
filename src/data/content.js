@@ -69,7 +69,7 @@ export const education = [
     thesisLabel: 'Dissertation:',
     thesisTitle: '"Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"',
     thesisLink: '/Honours Dissertation.pdf',
-    details: 'Supervised by Dr. Justin Case\n\n Awards:\n Beta Gamma Sigma Lifetime Member (Top 10%)\n First in Course Award in Research Methods in Finance (FIN701)\n First in Course Award in Financial Machine Learning (FIN710)\n\n Competitions:\n 2nd in Montarne Investment Banking Competition\n 3rd in AcademyGlobal Business Simulation Competition\n\n Leadership and Service:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in Econometric Methods (ECON720)\n Class Representative in Financial Machine Learning (FIN710)\n\nProfessional Development:\nMcKinsey Forward Program\nStartmate Student Fellowship',
+    details: 'Supervised by Dr. Justin Case\n\n Awards:\n Ranked Top 10%\n 1st of 29, Research Methods in Finance (FIN701)\n 1st of 22, Financial Machine Learning (FIN710)\n\n Competitions:\n 2nd of 25, Montarne Investment Banking Competition\n 3rd of 54, AcademyGlobal Business Simulation Competition\n\n Leadership and Service:\n Graduate Cohort Representative in the Department of Economics\n Class Representative in Econometric Methods (ECON720)\n Class Representative in Financial Machine Learning (FIN710)\n\nProfessional Development:\nMcKinsey Forward Program\nStartmate Student Fellowship',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
