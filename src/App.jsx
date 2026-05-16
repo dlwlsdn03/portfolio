@@ -16,6 +16,16 @@ function formatYear(date) {
   return date ? date.split('-')[0] : ''
 }
 
+function formatYearRange(startDate, endDate) {
+  const startYear = formatYear(startDate)
+  const endYear = formatYear(endDate)
+
+  if (!endYear) return `${startYear}-`
+  if (startYear === endYear) return startYear
+
+  return `${startYear}-${endYear.slice(-2)}`
+}
+
 function compareYearMonthDesc(a, b) {
   if (a === b) return 0
   if (!a) return -1
@@ -25,10 +35,8 @@ function compareYearMonthDesc(a, b) {
 
 function DateRange({ startDate, endDate }) {
   return (
-    <span className="inline-flex items-center shrink-0 tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
-      <span className="w-[4ch] text-right">{formatYear(startDate)}</span>
-      <span aria-hidden="true" className="w-[1.5ch] text-center">-</span>
-      <span className="w-[4ch] text-left">{formatYear(endDate)}</span>
+    <span className="inline-flex items-center shrink-0 w-[7ch] text-left tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+      {formatYearRange(startDate, endDate)}
     </span>
   )
 }
@@ -580,7 +588,7 @@ export default function App() {
           >
         
             {/* Landing */}
-            <Section id="home" className="flex items-center justify-center">
+            <Section id="home" withDivider={false} className="flex items-center justify-center">
               <h1 className="text-center font-bold tracking-tight text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
                 Hi, I&apos;m Rickey
               </h1>

@@ -65,7 +65,7 @@ export const education = [
     degree: 'BCom(Hons), Finance',
     startDate: '2022-02',
     endDate: '2025-11',
-    honours: 'First Class Honours',
+    honours: 'with First Class Honours',
     thesisLabel: 'Dissertation:',
     thesisTitle: '"Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"',
     thesisLink: '/Honours Dissertation.pdf',
