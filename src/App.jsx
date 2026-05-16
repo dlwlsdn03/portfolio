@@ -33,6 +33,25 @@ function DateRange({ startDate, endDate }) {
   )
 }
 
+function formatEducationCompletion(endDate) {
+  if (!endDate) return 'Expected'
+
+  const [year, month] = endDate.split('-').map(Number)
+  const monthEnd = new Date(year, month, 0)
+  const today = new Date()
+  const label = monthEnd < today ? 'Graduated' : 'Expected'
+
+  return `${label} ${year}`
+}
+
+function EducationCompletion({ endDate }) {
+  return (
+    <span className="shrink-0 tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+      {formatEducationCompletion(endDate)}
+    </span>
+  )
+}
+
 /* ---------- Theme toggle (persists in localStorage) ---------- */
 function useTheme() {
   const [mode, setMode] = useState(() => {
@@ -357,7 +376,7 @@ function CompanyGroup({ group }) {
   }
 
   return (
-    <li className="py-3 md:py-4 lg:py-6">
+    <li className="py-3 md:py-4 lg:py-4">
       <HeaderWrapper {...wrapperProps}>
         <div className="w-6 h-6 md:w-8 md:h-8 lg:w-11 lg:h-11 flex items-center justify-center shrink-0">
           <img
@@ -442,7 +461,7 @@ function EduItem({ e, idx }) {
   }
 
   return (
-    <li className="py-3 md:py-4 lg:py-6">
+    <li className="py-3 md:py-4 lg:py-4">
       <HeaderWrapper {...wrapperProps}>
         <div className="w-6 h-6 md:w-8 md:h-8 lg:w-11 lg:h-11 flex items-center justify-center shrink-0">
           <img
@@ -477,7 +496,7 @@ function EduItem({ e, idx }) {
           <span className="min-w-0 pr-3">{e.degree}</span>
 
           <span className="flex items-center gap-2 shrink-0">
-            <DateRange startDate={e.startDate} endDate={e.endDate} />
+            <EducationCompletion endDate={e.endDate} />
 
             <svg
               className={`w-3 h-3 lg:w-4 lg:h-4 text-[var(--muted)] transition-transform duration-200 ease-out
@@ -546,118 +565,100 @@ function ExperienceSubsection({ workArray }) {
 export default function App() {
   const scrollContainerRef = useRef(null)
 
-  const researchAreas = [
-    "Financial Economics",
-    "Financial Econometrics",
-    "Econometric Theory",
-  ]
-
   return (
     <>
-      <ThemeToggle />
-      <LiquidGlassNav containerRef={scrollContainerRef} />
+      <div className="portfolio-viewport bg-[var(--bg)] text-[color:var(--fg)]">
+        <div className="portfolio-scale-surface">
+          <ThemeToggle />
+          <LiquidGlassNav containerRef={scrollContainerRef} />
 
-      <div 
-        ref={scrollContainerRef}
-        className="h-dvh overflow-y-auto 
-                   bg-[var(--bg)] text-[color:var(--fg)] relative
-                   [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-      >
-      
-        {/* Landing */}
-        <Section id="home" className="min-h-screen flex items-center justify-center">
-          <h1 className="text-center font-bold tracking-tight text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
-            Hi, I&apos;m Rickey
-          </h1>
-        </Section>
+          <div 
+            ref={scrollContainerRef}
+            className="h-full overflow-y-auto 
+                       bg-[var(--bg)] text-[color:var(--fg)] relative
+                       [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+        
+            {/* Landing */}
+            <Section id="home" className="flex items-center justify-center">
+              <h1 className="text-center font-bold tracking-tight text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
+                Hi, I&apos;m Rickey
+              </h1>
+            </Section>
 
-        {/* Experience */}
-        <Section id="experience" className="min-h-screen flex items-center">
-          <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-7 lg:mb-10">Experience</h2>
-            
-            <ExperienceSubsection workArray={[...researchWork, ...professionalWork]} />
-          </div>
-        </Section>
-
-        {/* Education */}
-        <Section id="education" className="min-h-screen flex items-center">
-          <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-8">Education</h2>
-            <ul className="divide-y divide-[var(--border)]">
-              {education.map((e, idx) => (
-                <EduItem key={idx} e={e} idx={idx} />
-              ))}
-            </ul>
-          </div>
-        </Section>
-
-        {/* Research / Publications */}
-        <Section id="research" className="min-h-screen flex items-center">
-          <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-8">Research</h2>
-
-            <div className="mb-6 md:mb-7 lg:mb-10">
-              <div className="flex flex-wrap gap-1.5 md:gap-2 lg:gap-3">
-                {researchAreas.map((area, idx) => (
-                  <span 
-                    key={idx} 
-                    className="px-2.5 py-1 md:px-3 md:py-1.5 lg:px-4 lg:py-2
-                               border border-[var(--border)] rounded-full 
-                               text-[10px] md:text-[11px] lg:text-sm
-                               hover:bg-[var(--border)] transition-colors cursor-default"
-                  >
-                    {area}
-                  </span>
-                ))}
+            {/* Experience */}
+            <Section id="experience" className="flex items-center">
+              <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-7 lg:mb-5">Experience</h2>
+              
+                <ExperienceSubsection workArray={[...researchWork, ...professionalWork]} />
               </div>
-            </div>
+            </Section>
 
-            <ol className="list-decimal ml-5 lg:ml-6 space-y-4 md:space-y-5 lg:space-y-7">
-              {publications.map((p, idx) => (
-                <li key={idx}>
-                  <div className="leading-snug text-[10px] md:text-xs lg:text-sm">
-                    {p.link
-                      ? <a href={p.link} target="_blank" rel="noreferrer" className="hover:opacity-70 transition-opacity">
-                          &ldquo;{p.paperTitle}&rdquo;
-                        </a>
-                      : <>&ldquo;{p.paperTitle}&rdquo;</>
-                    }
-                    {p.coauthor && (
-                      <span className="font-normal"> (with {p.coauthor})</span>
-                    )}
-                  </div>
-                  {(p.status || p.journal) && (
-                    <div className="italic text-[10px] md:text-xs lg:text-sm mt-0.5">
-                      {p.status && p.journal
-                        ? <>{p.status} <span className="underline">{p.journal}</span></>
-                        : p.status || p.journal
-                      }
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </div>
-        </Section>
+            {/* Education */}
+            <Section id="education" className="flex items-center">
+              <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-5">Education</h2>
+                <ul className="divide-y divide-[var(--border)]">
+                  {education.map((e, idx) => (
+                    <EduItem key={idx} e={e} idx={idx} />
+                  ))}
+                </ul>
+              </div>
+            </Section>
 
-        {/* Connect */}
-        <Section id="connect" className="min-h-screen flex items-center justify-center">
-          <div className="text-center px-6">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-5 md:mb-6 lg:mb-8">Connect With Me</h2>
-            <div className="flex items-center justify-center gap-4 lg:gap-6">
-              <IconButton href="https://www.linkedin.com/in/rickey03/" label="LinkedIn">
-                <LinkedInIcon className="w-4 h-4 md:w-5 md:h-5 lg:w-7 lg:h-7" />
-              </IconButton>
-              <IconButton href="https://github.com/dlwlsdn03" label="GitHub">
-                <GitHubIcon className="w-4 h-4 md:w-5 md:h-5 lg:w-7 lg:h-7" />
-              </IconButton>
-              <IconButton href="mailto:me@rickey.co.nz" label="Email">
-                <MailIcon className="w-4 h-4 md:w-5 md:h-5 lg:w-7 lg:h-7" />
-              </IconButton>
-            </div>
+            {/* Research / Publications */}
+            <Section id="research" className="flex items-center">
+              <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-5">Research</h2>
+
+                <ol className="list-decimal ml-5 lg:ml-6 space-y-4 md:space-y-5 lg:space-y-7">
+                  {publications.map((p, idx) => (
+                    <li key={idx}>
+                      <div className="leading-snug text-[10px] md:text-xs lg:text-sm">
+                        {p.link
+                          ? <a href={p.link} target="_blank" rel="noreferrer" className="hover:opacity-70 transition-opacity">
+                              &ldquo;{p.paperTitle}&rdquo;
+                            </a>
+                          : <>&ldquo;{p.paperTitle}&rdquo;</>
+                        }
+                        {p.coauthor && (
+                          <span className="font-normal"> (with {p.coauthor})</span>
+                        )}
+                      </div>
+                      {(p.status || p.journal) && (
+                        <div className="italic text-[10px] md:text-xs lg:text-sm mt-0.5">
+                          {p.status && p.journal
+                            ? <>{p.status} <span className="underline">{p.journal}</span></>
+                            : p.status || p.journal
+                          }
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </Section>
+
+            {/* Connect */}
+            <Section id="connect" className="flex items-center justify-center">
+              <div className="text-center px-6">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-5 md:mb-6 lg:mb-8">You can also find me here!</h2>
+                <div className="flex items-center justify-center gap-4 lg:gap-6">
+                  <IconButton href="https://www.linkedin.com/in/rickey03/" label="LinkedIn">
+                    <LinkedInIcon className="w-4 h-4 md:w-5 md:h-5 lg:w-7 lg:h-7" />
+                  </IconButton>
+                  <IconButton href="https://github.com/dlwlsdn03" label="GitHub">
+                    <GitHubIcon className="w-4 h-4 md:w-5 md:h-5 lg:w-7 lg:h-7" />
+                  </IconButton>
+                  <IconButton href="mailto:me@rickey.co.nz" label="Email">
+                    <MailIcon className="w-4 h-4 md:w-5 md:h-5 lg:w-7 lg:h-7" />
+                  </IconButton>
+                </div>
+              </div>
+            </Section>
           </div>
-        </Section>
+        </div>
       </div>
     </>
   )
