@@ -5,7 +5,7 @@ export const professionalWork = [
     role: 'Strategy Consultant',
     startDate: '2025-10',
     endDate: null,
-    summary: 'Strategy Consulting, Deals Advisory',
+    summary: 'Select projects: \n Transformation strategy for an ASX/NZX-listed healthcare firm \n Digital Health Roadmap for an Australian-state health department',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
