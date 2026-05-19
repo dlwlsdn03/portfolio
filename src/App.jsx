@@ -60,11 +60,19 @@ function EducationCompletion({ endDate }) {
   )
 }
 
+const THEME_STORAGE_KEY = 'theme'
+const THEME_USER_STORAGE_KEY = 'theme-user-selected'
+const DEFAULT_THEME_MODE = 'system'
+const THEME_MODES = ['light', 'dark', 'system']
+
 /* ---------- Theme toggle (persists in localStorage) ---------- */
 function useTheme() {
   const [mode, setMode] = useState(() => {
-    if (typeof window === 'undefined') return 'system'
-    return localStorage.getItem('theme') ?? 'system'
+    if (typeof window === 'undefined') return DEFAULT_THEME_MODE
+
+    const hasSelectedTheme = localStorage.getItem(THEME_USER_STORAGE_KEY) === 'true'
+    const savedMode = hasSelectedTheme ? localStorage.getItem(THEME_STORAGE_KEY) : null
+    return THEME_MODES.includes(savedMode) ? savedMode : DEFAULT_THEME_MODE
   })
 
   useEffect(() => {
@@ -75,7 +83,7 @@ function useTheme() {
       else root.classList.remove('dark')
     }
 
-    localStorage.setItem('theme', mode)
+    localStorage.setItem(THEME_STORAGE_KEY, mode)
 
     if (mode === 'system') {
       const mq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -173,7 +181,11 @@ function ThemeToggle() {
             key={opt.value}
             role="option"
             aria-selected={mode === opt.value}
-            onClick={() => { setMode(opt.value); setOpen(false) }}
+            onClick={() => {
+              localStorage.setItem(THEME_USER_STORAGE_KEY, 'true')
+              setMode(opt.value)
+              setOpen(false)
+            }}
             className={`flex items-center justify-between px-3 py-2 cursor-pointer
                         text-[10px] md:text-xs
                         transition-colors duration-150 hover:bg-[var(--border)]
@@ -196,7 +208,7 @@ function ThemeToggle() {
   )
 }
 
-const SECTION_IDS = ['home', 'experience', 'education', 'research', 'connect']
+const SECTION_IDS = ['home', 'education', 'research', 'academic', 'professional', 'connect']
 
 function LiquidGlassNav({ containerRef }) {
   const [isVisible, setIsVisible] = useState(false)
@@ -594,15 +606,6 @@ export default function App() {
               </h1>
             </Section>
 
-            {/* Experience */}
-            <Section id="experience" className="flex items-center">
-              <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-7 lg:mb-5">Experience</h2>
-              
-                <ExperienceSubsection workArray={[...researchWork, ...professionalWork]} />
-              </div>
-            </Section>
-
             {/* Education */}
             <Section id="education" className="flex items-center">
               <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
@@ -615,7 +618,7 @@ export default function App() {
               </div>
             </Section>
 
-            {/* Research / Publications */}
+            {/* Research */}
             <Section id="research" className="flex items-center">
               <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-5">Research</h2>
@@ -645,6 +648,24 @@ export default function App() {
                     </li>
                   ))}
                 </ol>
+              </div>
+            </Section>
+
+            {/* Academic */}
+            <Section id="academic" className="flex items-center">
+              <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-7 lg:mb-5">Academic</h2>
+
+                <ExperienceSubsection workArray={researchWork} />
+              </div>
+            </Section>
+
+            {/* Professional */}
+            <Section id="professional" className="flex items-center">
+              <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-7 lg:mb-5">Professional</h2>
+
+                <ExperienceSubsection workArray={professionalWork} />
               </div>
             </Section>
 

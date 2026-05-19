@@ -1,12 +1,26 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <link rel="icon" href="/favicon.svg?v=1778922207478" />
+    <link rel="icon" href="/favicon.svg?v=1779186470360" />
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <script>
+      (() => {
+        const modes = ['light', 'dark', 'system']
+        const hasSelectedTheme = localStorage.getItem('theme-user-selected') === 'true'
+        const savedMode = hasSelectedTheme ? localStorage.getItem('theme') : null
+        const mode = modes.includes(savedMode) ? savedMode : 'system'
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+        document.documentElement.classList.toggle(
+          'dark',
+          mode === 'dark' || (mode === 'system' && prefersDark)
+        )
+      })()
+    </script>
 
     <title>Rickey</title>
     
@@ -40,8 +54,8 @@
         font-display: swap;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-CzXpWuZQ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DWY6BQ23.css">
+    <script type="module" crossorigin src="/assets/index--bC8RyJ3.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DufxHz-i.css">
   </head>
   
   <body class="antialiased" style="background: var(--bg); color: var(--fg);">

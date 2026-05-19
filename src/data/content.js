@@ -5,60 +5,36 @@ export const professionalWork = [
     role: 'Strategy Consultant',
     startDate: '2025-10',
     endDate: null,
-    summary: 'Select projects: \n Transformation strategy for an ASX/NZX-listed healthcare firm \n Digital Health Roadmap for an Australian-state health department',
+    summary: 'Select projects: \n Transformation strategy for ASX-NZX listed healthcare firm \n Digital health roadmap for Australian state department',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
-  // {
-  //   // company: 'LongView Owners',
-  //   // link: 'https://www.longviewowners.co.nz/',
-  //   // role: 'Investment Intern',
-  //   // startDate: '2024-08',
-  //   // endDate: '2025-10',
-  //   // summary: 'Private Equity and Search Fund',
-  //   // logo: 'lvo2.png',
-  //   // logoDark: 'lvo2-dark.png'
-  // },
+  {
+    company: 'LongView Owners',
+    link: 'https://www.longviewowners.co.nz/',
+    role: 'Investment Analyst',
+    startDate: '2024-08',
+    endDate: '2025-10',
+    summary: 'Private equity \& search fund',
+    logo: 'lvo2.png',
+    logoDark: 'lvo2-dark.png'
+  },
 ]
 
 export const researchWork = [
-  // {
-  //   company: 'Business and Economics, University of Auckland',
-  //   link: 'https://www.auckland.ac.nz',
-  //   role: 'Researcher',
-  //   startDate: '2026-01',
-  //   endDate: null,
-  //   summary: 'Department of Accounting and Finance',
-  //   logo: 'uoa.jpg',
-  //   logoDark: 'uoa-dark.jpg'
-  // },
   {
-    company: 'Engineering and Design, University of Auckland',
+    company: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
     role: 'Research Assistant',
     startDate: '2024-02',
     endDate: '2025-11',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn\n\nIEEE Service Award 2025\nIEEE Service Award 2024',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn\n\nSelect projects:\nAutonomous multi-agent robot soccer system\niRobi healthcare robot\n\nAwards:\nIEEE Service Award 2025\nIEEE Service Award 2024',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
 ]
 
 export const education = [
-  // {
-  //   school: 'University of Auckland',
-  //   link: 'https://www.auckland.ac.nz',
-  //   degree: 'MCom, Finance',
-  //   startDate: '2026-01',
-  //   endDate: '2027-12',
-  //   honours: null,
-  //   thesisLabel: 'Thesis (40,000 words):',
-  //   thesisTitle: '"Volatility Forecasting Using Effective Degrees of Freedom for Adaptive Complexity Control"',
-  //   thesisLink: '/Masters Thesis.pdf',
-  //   details: 'Dr. Justin Case (Main Supervisor)\nProf. Henk Berkman (Co-supervisor)\nProf. Peter Phillips (Methodological Advisor)\n\n Awards:\n University of Auckland Research Masters Scholarship',
-  //   logo: 'uoa.jpg',
-  //   logoDark: 'uoa-dark.jpg'
-  // },
   {
     school: 'University of Auckland',
     link: 'https://www.auckland.ac.nz',
@@ -69,7 +45,7 @@ export const education = [
     thesisLabel: 'Dissertation:',
     thesisTitle: '"Realised Volatility Forecasting using Neural Networks and Statistically Disciplined Model Memory"',
     thesisLink: '/Honours Dissertation.pdf',
-    details: 'Supervised by Dr. Justin Case\n\nAwards:\nBeta Gamma Sigma (Top 10% of Graduating Cohort)\nFirst in Course Award, Research Methods in Finance (1st of 29, Graduate)\nFirst in Course Award, Financial Machine Learning (1st of 22, Graduate)\nMontarne Investment Banking Competition (2nd of 25)\nAcademyGlobal Business Simulation Competition (3rd of 54)',
+    details: 'Supervised by Dr. Justin Case\n\nAwards:\nBeta Gamma Sigma (top 10% of graduating cohort)\nFirst in Course Award, Research Methods in Finance (1st of 29, graduate)\nFirst in Course Award, Financial Machine Learning (1st of 22, graduate)\nMontarne Investment Banking Competition (2nd of 25)\nAcademyGlobal Business Simulation Competition (3rd of 54)',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
