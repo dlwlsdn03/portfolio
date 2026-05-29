@@ -13,7 +13,7 @@ export const professionalWork = [
     company: 'LongView Owners',
     link: 'https://www.longviewowners.co.nz/',
     role: 'Investment Analyst',
-    startDate: '2024-08',
+    startDate: '2025-08',
     endDate: '2025-10',
     summary: 'Private equity \& search fund',
     logo: 'lvo2.png',
