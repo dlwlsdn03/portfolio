@@ -167,14 +167,13 @@ function ThemeToggle() {
       <ul
         role="listbox"
         aria-label="Theme options"
-        className={`absolute right-0 mt-1.5 w-24 rounded-xl border overflow-hidden
-                    bg-[var(--bg)] shadow-lg
+        className={`absolute right-0 mt-1.5 w-24 rounded-xl overflow-hidden
+                    liquid-glass
                     transition-all duration-200 ease-out origin-top-right
                     ${open
                       ? 'opacity-100 scale-100 pointer-events-auto'
                       : 'opacity-0 scale-95 pointer-events-none'
                     }`}
-        style={{ borderColor: 'var(--border)' }}
       >
         {options.map((opt) => (
           <li
@@ -186,9 +185,9 @@ function ThemeToggle() {
               setMode(opt.value)
               setOpen(false)
             }}
-            className={`flex items-center justify-between px-3 py-2 cursor-pointer
+            className={`liquid-glass-option flex items-center justify-between px-3 py-2 cursor-pointer
                         text-[10px] md:text-xs
-                        transition-colors duration-150 hover:bg-[var(--border)]
+                        transition-colors duration-150
                         ${mode === opt.value
                           ? 'text-[color:var(--fg)]'
                           : 'text-[color:var(--muted)]'
@@ -308,17 +307,13 @@ function LiquidGlassNav({ containerRef }) {
                     ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         <div
+          className="liquid-glass"
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
             padding: '8px 16px',
             borderRadius: '100px',
-            background: 'var(--nav-pill-bg)',
-            border: '0.5px solid var(--nav-pill-border)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 24px rgba(0,0,0,0.08)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', filter: 'url(#goo-nav)' }}>

@@ -21,6 +21,11 @@ html { scroll-behavior: smooth; }
   --nav-dot: rgb(60, 60, 60);
   --nav-pill-bg: rgba(0, 0, 0, 0.06);
   --nav-pill-border: rgba(0, 0, 0, 0.15);
+  --liquid-glass-bg: rgba(255, 255, 255, 0.48);
+  --liquid-glass-border: rgba(0, 0, 0, 0.15);
+  --liquid-glass-highlight: rgba(255, 255, 255, 0.35);
+  --liquid-glass-shadow: rgba(0, 0, 0, 0.08);
+  --liquid-glass-hover: rgba(0, 0, 0, 0.06);
 }
 
 .dark {
@@ -35,6 +40,11 @@ html { scroll-behavior: smooth; }
   --nav-dot: rgb(255, 255, 255);
   --nav-pill-bg: rgba(255, 255, 255, 0.14);
   --nav-pill-border: rgba(255, 255, 255, 0.25);
+  --liquid-glass-bg: rgba(255, 255, 255, 0.14);
+  --liquid-glass-border: rgba(255, 255, 255, 0.25);
+  --liquid-glass-highlight: rgba(255, 255, 255, 0.25);
+  --liquid-glass-shadow: rgba(0, 0, 0, 0.28);
+  --liquid-glass-hover: rgba(255, 255, 255, 0.16);
 }
 
 html, body, button, input, textarea, select {
@@ -104,6 +114,21 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
   transform: translateX(-50%);
   background: var(--section-divider);
   pointer-events: none;
+}
+
+.liquid-glass {
+  background: var(--liquid-glass-bg);
+  border: 0.5px solid var(--liquid-glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    inset 0 1px 0 var(--liquid-glass-highlight),
+    0 4px 24px var(--liquid-glass-shadow);
+}
+
+.liquid-glass-option:hover,
+.liquid-glass-option[aria-selected='true'] {
+  background: var(--liquid-glass-hover);
 }
 
 @media (min-width: 1024px) {
