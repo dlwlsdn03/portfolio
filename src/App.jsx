@@ -35,7 +35,7 @@ function compareYearMonthDesc(a, b) {
 
 function DateRange({ startDate, endDate }) {
   return (
-    <span className="inline-flex items-center shrink-0 w-[7ch] text-left tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
+    <span className="inline-flex items-center shrink-0 whitespace-nowrap w-[7ch] text-left tabular-nums text-[8px] md:text-[10px] lg:text-xs text-[var(--muted-60)]">
       {formatYearRange(startDate, endDate)}
     </span>
   )
@@ -106,7 +106,7 @@ function ThemeToggle() {
 
   // Track the actual resolved theme (needed for system mode icon)
   const [resolvedDark, setResolvedDark] = useState(() =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches
+    typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
   )
 
   useEffect(() => {
@@ -129,9 +129,19 @@ function ThemeToggle() {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+
+    const handler = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [open])
+
   const options = [
-    { value: 'light',  label: 'Light'  },
     { value: 'dark',   label: 'Dark'   },
+    { value: 'light',  label: 'Light'  },
     { value: 'system', label: 'System' },
   ]
 
@@ -139,70 +149,54 @@ function ThemeToggle() {
 
   return (
     <div ref={ref} className="fixed top-4 right-4 z-50">
-      {/* Trigger button */}
-      <button
-        type="button"
-        onClick={() => setOpen(v => !v)}
-        aria-label="Toggle color theme"
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        className="inline-flex items-center gap-1.5
-                   w-8 h-8 lg:w-10 lg:h-10
-                   transition-[background,color,filter] duration-200
-                   focus:outline-none"
-        style={{ borderColor: 'var(--fg)' }}
+      <div
+        className={`theme-morph liquid-glass ${open ? 'theme-morph--open' : 'theme-morph--closed'}`}
       >
-        <img src={icon} alt="" className="w-4 h-4 lg:w-5 lg:h-5 select-none" />
-        <svg
-          className={`w-3 h-3 text-[color:var(--fg)] transition-transform duration-300
-                      ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                      ${open ? 'rotate-180' : 'rotate-0'}`}
-          fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+        <button
+          type="button"
+          onClick={() => setOpen(v => !v)}
+          aria-label="Toggle color theme"
+          aria-haspopup="menu"
+          aria-expanded={open}
+          className="theme-morph-trigger"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
+          <span className="theme-morph-icon-wrap">
+            <img src={icon} alt="" className="theme-morph-icon select-none" />
+          </span>
+        </button>
 
-      {/* Dropdown */}
-      <ul
-        role="listbox"
-        aria-label="Theme options"
-        className={`absolute right-0 mt-1.5 w-24 rounded-xl overflow-hidden
-                    liquid-glass
-                    transition-all duration-200 ease-out origin-top-right
-                    ${open
-                      ? 'opacity-100 scale-100 pointer-events-auto'
-                      : 'opacity-0 scale-95 pointer-events-none'
-                    }`}
-      >
-        {options.map((opt) => (
-          <li
-            key={opt.value}
-            role="option"
-            aria-selected={mode === opt.value}
-            onClick={() => {
-              localStorage.setItem(THEME_USER_STORAGE_KEY, 'true')
-              setMode(opt.value)
-              setOpen(false)
-            }}
-            className={`liquid-glass-option flex items-center justify-between px-3 py-2 cursor-pointer
-                        text-[10px] md:text-xs
-                        transition-colors duration-150
-                        ${mode === opt.value
-                          ? 'text-[color:var(--fg)]'
-                          : 'text-[color:var(--muted)]'
-                        }`}
-          >
-            <span>{opt.label}</span>
-            {mode === opt.value && (
-              <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24"
-                   stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            )}
-          </li>
-        ))}
-      </ul>
+        <ul
+          role="menu"
+          aria-label="Theme options"
+          aria-hidden={!open}
+          className="theme-morph-menu"
+        >
+          {options.map((opt, index) => (
+            <li key={opt.value} role="none">
+              <button
+                type="button"
+                role="menuitemradio"
+                aria-checked={mode === opt.value}
+                tabIndex={open ? 0 : -1}
+                onClick={() => {
+                  localStorage.setItem(THEME_USER_STORAGE_KEY, 'true')
+                  setMode(opt.value)
+                  setOpen(false)
+                }}
+                className={`theme-morph-option liquid-glass-option
+                            ${mode === opt.value ? 'theme-morph-option--active' : ''}`}
+                style={{ '--option-index': index }}
+              >
+                <span>{opt.label}</span>
+                <svg className="theme-morph-check" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
@@ -346,15 +340,12 @@ function IconButton({ href, label, children }) {
       target={href?.startsWith('http') ? '_blank' : undefined}
       rel={href?.startsWith('http') ? 'noreferrer' : undefined}
       className="group inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16
-                 border rounded-full text-[color:var(--fg)] bg-transparent
+                 contact-liquid-glass rounded-full text-[color:var(--fg)]
                  transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                 hover:-translate-y-1.5 
-                 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_10px_20px_-10px_rgba(255,255,255,0.2)]
-                 hover:ring-4 hover:ring-black/5 dark:hover:ring-white/10
+                 hover:-translate-y-1.5 hover:scale-105
                  active:scale-90 active:ring-0 focus:outline-none"
-      style={{ borderColor: 'var(--border)' }}
     >
-      <span className="transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
+      <span className="relative z-10 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
                        group-hover:scale-110">
         {children}
       </span>
