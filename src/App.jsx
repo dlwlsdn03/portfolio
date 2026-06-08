@@ -285,11 +285,6 @@ function LiquidGlassNav({ containerRef }) {
       animateTo(targetIdx)
       if (!open) showThenFade()
     }
-    const handleUserScroll = () => {
-      if (!open) return
-      setOpen(false)
-      showThenFade()
-    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -307,17 +302,30 @@ function LiquidGlassNav({ containerRef }) {
     )
 
     container.addEventListener('scroll', handleScroll, { passive: true })
-    container.addEventListener('wheel', handleUserScroll, { passive: true })
-    container.addEventListener('touchmove', handleUserScroll, { passive: true })
     sections.forEach(s => observer.observe(s))
     return () => {
       container.removeEventListener('scroll', handleScroll)
-      container.removeEventListener('wheel', handleUserScroll)
-      container.removeEventListener('touchmove', handleUserScroll)
       observer.disconnect()
       if (timerRef.current) clearTimeout(timerRef.current)
     }
   }, [containerRef, open])
+
+  useEffect(() => {
+    if (!open) return
+
+    const collapseOnScrollIntent = () => {
+      setOpen(false)
+      showThenFade()
+    }
+    const options = { passive: true, capture: true }
+
+    document.addEventListener('wheel', collapseOnScrollIntent, options)
+    document.addEventListener('touchmove', collapseOnScrollIntent, options)
+    return () => {
+      document.removeEventListener('wheel', collapseOnScrollIntent, options)
+      document.removeEventListener('touchmove', collapseOnScrollIntent, options)
+    }
+  }, [open])
 
   useEffect(() => {
     const handler = (e) => {

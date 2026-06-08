@@ -289,9 +289,10 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
   --scroll-morph-padding: 0.5rem;
   --scroll-option-radius: 999px;
   --scroll-row-step: 2.55rem;
+  --scroll-dot-edge-space: 1.125rem;
   position: relative;
   overflow: hidden;
-  width: 7.25rem;
+  width: 8.75rem;
   height: 2rem;
   border-radius: var(--scroll-morph-radius);
   clip-path: inset(0 round var(--scroll-morph-radius));
@@ -307,7 +308,7 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
 }
 
 .scroll-morph--closed {
-  width: 7.25rem;
+  width: 8.75rem;
   height: 2rem;
 }
 
@@ -355,6 +356,7 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
   display: flex;
   align-items: center;
   gap: 0.625rem;
+  padding: 0 var(--scroll-dot-edge-space);
   filter: url(#goo-nav);
 }
 
@@ -562,7 +564,8 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
   .scroll-morph,
   .scroll-morph--closed {
     --scroll-row-step: 2.7rem;
-    width: 8.25rem;
+    --scroll-dot-edge-space: 1.25rem;
+    width: 9.25rem;
     height: 2.5rem;
   }
 
