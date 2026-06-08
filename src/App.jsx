@@ -201,14 +201,35 @@ function ThemeToggle() {
   )
 }
 
-const SECTION_IDS = ['home', 'education', 'research', 'academic', 'professional', 'connect']
+const SECTIONS = [
+  { id: 'home', label: 'Home' },
+  { id: 'education', label: 'Education' },
+  { id: 'research', label: 'Research' },
+  { id: 'academic', label: 'Academic' },
+  { id: 'professional', label: 'Professional' },
+  { id: 'connect', label: 'Connect' },
+]
+
+const SECTION_IDS = SECTIONS.map(section => section.id)
+const SCROLL_NAV_IDLE_TIMEOUT = 2800
 
 function LiquidGlassNav({ containerRef }) {
   const [isVisible, setIsVisible] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [activeIdx, setActiveIdx] = useState(0)
   const timerRef = useRef(null)
+  const ref = useRef(null)
   const currentIdxRef = useRef(0)
   const animatingRef = useRef(false)
-  const dotsRef = useRef([])
+
+  const showThenFade = () => {
+    setIsVisible(true)
+    if (timerRef.current) clearTimeout(timerRef.current)
+    timerRef.current = setTimeout(() => {
+      setIsVisible(false)
+      setOpen(false)
+    }, SCROLL_NAV_IDLE_TIMEOUT)
+  }
 
   const animateTo = (targetIdx) => {
     if (animatingRef.current) return
@@ -220,20 +241,11 @@ function LiquidGlassNav({ containerRef }) {
     let i = from
 
     const hop = () => {
-      const prev = i
       i += step
       currentIdxRef.current = i
-
-      if (dotsRef.current[i]) {
-        dotsRef.current[i].style.width = '14px'
-        dotsRef.current[i].style.height = '14px'
-      }
+      setActiveIdx(i)
 
       setTimeout(() => {
-        if (dotsRef.current[prev]) {
-          dotsRef.current[prev].style.width = '8px'
-          dotsRef.current[prev].style.height = '8px'
-        }
         if (i !== targetIdx) {
           setTimeout(hop, 55)
         } else {
@@ -245,11 +257,39 @@ function LiquidGlassNav({ containerRef }) {
     hop()
   }
 
+  const closeAfterNavigation = () => {
+    setOpen(false)
+    showThenFade()
+  }
+
+  const navigateToSection = (section, idx) => {
+    const target = document.getElementById(section.id)
+    if (!target) return
+
+    currentIdxRef.current = idx
+    setActiveIdx(idx)
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    closeAfterNavigation()
+  }
+
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
 
     const sections = SECTION_IDS.map(id => document.getElementById(id)).filter(Boolean)
+    const handleScroll = () => {
+      const targetIdx = Math.max(
+        0,
+        Math.min(SECTION_IDS.length - 1, Math.round(container.scrollTop / container.clientHeight))
+      )
+      animateTo(targetIdx)
+      if (!open) showThenFade()
+    }
+    const handleUserScroll = () => {
+      if (!open) return
+      setOpen(false)
+      showThenFade()
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -258,9 +298,7 @@ function LiquidGlassNav({ containerRef }) {
             const idx = SECTION_IDS.indexOf(entry.target.id)
             if (idx !== -1) {
               animateTo(idx)
-              setIsVisible(true)
-              if (timerRef.current) clearTimeout(timerRef.current)
-              timerRef.current = setTimeout(() => setIsVisible(false), 2000)
+              if (!open) showThenFade()
             }
           }
         })
@@ -268,12 +306,50 @@ function LiquidGlassNav({ containerRef }) {
       { root: container, threshold: 0.5 }
     )
 
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    container.addEventListener('wheel', handleUserScroll, { passive: true })
+    container.addEventListener('touchmove', handleUserScroll, { passive: true })
     sections.forEach(s => observer.observe(s))
     return () => {
+      container.removeEventListener('scroll', handleScroll)
+      container.removeEventListener('wheel', handleUserScroll)
+      container.removeEventListener('touchmove', handleUserScroll)
       observer.disconnect()
       if (timerRef.current) clearTimeout(timerRef.current)
     }
-  }, [containerRef])
+  }, [containerRef, open])
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false)
+        if (isVisible) showThenFade()
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [isVisible])
+
+  useEffect(() => {
+    if (!open) return
+
+    setIsVisible(true)
+    if (timerRef.current) clearTimeout(timerRef.current)
+
+    const handler = (e) => {
+      if (e.key === 'Escape') {
+        setOpen(false)
+        showThenFade()
+      }
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [open])
+
+  const handleToggle = () => {
+    if (!isVisible) return
+    setOpen(v => !v)
+  }
 
   return (
     <>
@@ -296,36 +372,55 @@ function LiquidGlassNav({ containerRef }) {
       </svg>
 
       <div
+        ref={ref}
         className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-40
                     transition-opacity duration-500 ease-in-out
                     ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         <div
-          className="liquid-glass"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '8px 16px',
-            borderRadius: '100px',
-          }}
+          className={`scroll-morph liquid-glass ${open ? 'scroll-morph--open' : 'scroll-morph--closed'}`}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', filter: 'url(#goo-nav)' }}>
-            {SECTION_IDS.map((_, idx) => (
-              <div
-                key={idx}
-                ref={el => dotsRef.current[idx] = el}
-                style={{
-                  borderRadius: '50%',
-                  flexShrink: 0,
-                  background: 'var(--nav-dot)',
-                  transition: 'width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1)',
-                  width: idx === 0 ? '14px' : '8px',
-                  height: idx === 0 ? '14px' : '8px',
-                }}
-              />
+          <button
+            type="button"
+            aria-label="Open page navigator"
+            aria-haspopup="menu"
+            aria-expanded={open}
+            className="scroll-morph-trigger"
+            onClick={handleToggle}
+          >
+            <span className="scroll-morph-dots" aria-hidden="true">
+              {SECTIONS.map((section, idx) => (
+                <span
+                  key={section.id}
+                  className={`scroll-morph-dot ${activeIdx === idx ? 'scroll-morph-dot--active' : ''}`}
+                />
+              ))}
+            </span>
+          </button>
+
+          <ul
+            role="menu"
+            aria-label="Page sections"
+            aria-hidden={!open}
+            className="scroll-morph-menu"
+          >
+            {SECTIONS.map((section, idx) => (
+              <li key={section.id} role="none">
+                <button
+                  type="button"
+                  role="menuitemradio"
+                  aria-checked={activeIdx === idx}
+                  tabIndex={open ? 0 : -1}
+                  onClick={() => navigateToSection(section, idx)}
+                  className={`scroll-morph-option liquid-glass-option
+                              ${activeIdx === idx ? 'scroll-morph-option--active' : ''}`}
+                  style={{ '--option-index': idx }}
+                >
+                  <span>{section.label}</span>
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </>
