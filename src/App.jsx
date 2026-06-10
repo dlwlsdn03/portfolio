@@ -712,10 +712,10 @@ export default function App() {
               <div className="max-w-3xl lg:max-w-4xl mx-auto px-6 lg:px-8 w-full">
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-5">Research</h2>
 
-                <ol className="list-decimal ml-5 lg:ml-6 space-y-4 md:space-y-5 lg:space-y-7">
+                <ol className="research-publications list-decimal pl-4 lg:pl-5 space-y-4 md:space-y-5 lg:space-y-7">
                   {publications.map((p, idx) => (
                     <li key={idx}>
-                      <div className="leading-snug text-[10px] md:text-xs lg:text-sm">
+                      <div className="leading-snug">
                         {p.link
                           ? <a href={p.link} target="_blank" rel="noreferrer" className="hover:opacity-70 transition-opacity">
                               &ldquo;{p.paperTitle}&rdquo;
@@ -727,7 +727,7 @@ export default function App() {
                         )}
                       </div>
                       {(p.status || p.journal) && (
-                        <div className="italic text-[10px] md:text-xs lg:text-sm mt-0.5">
+                        <div className="italic mt-0.5">
                           {p.status && p.journal
                             ? <>{p.status} <span className="underline">{p.journal}</span></>
                             : p.status || p.journal

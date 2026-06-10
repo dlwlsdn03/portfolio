@@ -135,6 +135,17 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
   background: var(--liquid-glass-hover);
 }
 
+.research-publications > li {
+  font-family: var(--font-default);
+  font-size: 10px;
+  line-height: 1.375;
+}
+
+.research-publications > li::marker {
+  font-family: var(--font-default);
+  font-size: 10px;
+}
+
 .theme-morph {
   --theme-morph-radius: 1.5rem;
   --theme-morph-padding: 0.375rem;
@@ -598,11 +609,23 @@ html, body, #root { background: var(--bg); color: var(--fg); min-height: 100%; }
 }
 
 @media (min-width: 768px) {
+  .research-publications > li,
+  .research-publications > li::marker {
+    font-size: 0.75rem;
+  }
+
   .portfolio-scale-surface {
     width: calc(100% / 0.9);
     height: calc(100% / 0.9);
     transform: scale(0.9);
     transform-origin: top left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .research-publications > li,
+  .research-publications > li::marker {
+    font-size: 0.875rem;
   }
 }
 

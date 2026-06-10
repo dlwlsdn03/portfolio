@@ -5,7 +5,7 @@ export const professionalWork = [
     role: 'Strategy Consultant',
     startDate: '2025-10',
     endDate: null,
-    summary: 'Select projects: \n Transformation strategy for ASX-NZX listed healthcare firm \n Digital health roadmap for Australian state department',
+    summary: 'Select projects: \n Transformation strategy and operations restructuring for Ryman Healthcare \n Digital health roadmap for Victorian Department of Health',
     logo: 'cva1.png',
     logoDark: 'cva1-dark.png'
   },
@@ -28,7 +28,7 @@ export const researchWork = [
     role: 'Research Assistant',
     startDate: '2024-02',
     endDate: '2025-11',
-    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn\n\nSelect projects:\nAutonomous multi-agent robot soccer system\niRobi healthcare robot\n\nAwards:\nIEEE Service Award 2025\nIEEE Service Award 2024',
+    summary: 'Department of Electrical, Computer, and Software Engineering\nSupervised by Dr. Ho Seok Ahn\n\nSelect projects:\nMulti-agent robot soccer system\niRobi healthcare robot\n\nAwards:\nIEEE Service Award 2025\nIEEE Service Award 2024',
     logo: 'uoa.jpg',
     logoDark: 'uoa-dark.jpg'
   },
